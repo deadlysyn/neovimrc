@@ -22,9 +22,29 @@ portable, but I've purposefully optimized for MacOS + [iTerm2](https://www.iterm
 Hopefully you find this useful...  If not directly, at least as a starting point for your
 own customization!
 
+## Dependencies
+
+Out of the box, this configuration requires the following:
+
+```
+# Optional...my preferences.
+brew install tmux
+brew install iterm2
+
+# You probably have this already if you're here...  ;-)
+brew install neovim
+
+# Hard dependencies
+brew tap caskroom/fonts
+brew cask install font-fira-code
+brew install gawk
+brew install fzf
+brew install the_silver_searcher
+```
+
 ## Plugins
 
-
+I use [vim-plug](https://github.com/junegunn/vim-plug) for plugin management.
 
 plugins included...
 
@@ -37,17 +57,6 @@ color scheme/base16 plug... why not solarized
 font / ligatures
 truecolor
 
-## Dependencies
-
-```
-brew install iterm2
-brew install neovim
-brew tap caskroom/fonts
-brew cask install font-fira-code
-brew install gawk
-brew install fzf
-brew install the_silver_searcher
-```
 
 ## Installation
 
@@ -59,7 +68,7 @@ file hierarchy
 
 ## Resources & Inspiration
 
-- 
+- [Great tmux config](https://github.com/tony/tmux-config)
 - [Ian Langworth's awesome VIM writeup](https://statico.github.io/vim3.html)
 - [Vim without NERD tree or CtrlP](https://gist.github.com/csswizardry/9a33342dace4786a9fee35c73fa5deeb)
 - [Fira Code Font](https://github.com/tonsky/FiraCode)
