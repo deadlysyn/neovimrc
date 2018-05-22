@@ -86,7 +86,7 @@ Read over the documentation for each of the included plugins for usage informati
 ## Layout, Color & Themes
 
 Unless `$KDG_HOME_CONFIG` points elsewhere, Neovim configuration resides in `~/.config/neovim`
-(like vim's `~/.vim'). The main file is `init.vim` (Neovim's equivalent of `.vimrc`), which
+(like vim's `~/.vim`). The main file is `init.vim` (Neovim's equivalent of `.vimrc`), which
 simply sources a number of `*.vim` files. This makes things somewhat modular -- you can easily
 exclude parts of the configuration you don't use. There's also an install script which will
 let you install `simple` (ideal for DevOps/sysadmins) or `full` versions.
@@ -139,10 +139,12 @@ which will differ based on the terminal you use, whether you layer on tmux, etc.
 
 Along with truecolor support, I mostly live in the commandline so use
 [base16-shell](https://github.com/chriskempson/base16-shell). There's also a useful `colortest`
-utility there you can use to verify proper behavior.
+utility there you can use to verify proper behavior, and
+[a helpful troubleshooting guide](https://recordnotfound.com/base16-vim-chriskempson-31016).
 
-This has changed a lot over the years... here are things that seem to be working for me on
-latest MacOS + iterm2 + tmux + neovim:
+Historically, support was spotty and this seemed to be black magic...  With any recent
+combination of tools it should be straightforward. Here are things that seem to be working for me
+on MacOS + iterm2 + tmux + neovim:
 
 ```
 # iTerm
