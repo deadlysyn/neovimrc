@@ -170,19 +170,19 @@ enable ligatures via `iTerm Settings > Profiles > Text > Font`.
 
 ## Installation
 
-...need install script
-vim-plug
-PlugInstall
+TODO: install script
 
 ## Terminal Thoughts
 
-to iterm or not to iterm?
-    - originally for tabs and lots of fixes
-    - mac terminal has evolved a lot
+Years ago I hopped on the iTerm bandwagon because it addressed serious gaps in the native MacOS
+terminal. As things have evolved, there are less reasons to use a terminal
+replacement...it largely comes down to personal preference.  A future experiment may include
+rip/replace of iTerm (though I still love it!), or at least keeping a close eye on performance
+due to [this interesting writeup](https://danluu.com/term-latency).
 
 ## Resources & Inspiration
 
-- [Ian Langworth's awesome VIM writeup](https://statico.github.io/vim3.html)
+- [Ian Langworth's amazing VIM writeup](https://statico.github.io/vim3.html)
 - [Vim without NERD tree or CtrlP](https://gist.github.com/csswizardry/9a33342dace4786a9fee35c73fa5deeb)
 - [VimR: Neovim GUI](https://github.com/qvacua/vimr)
-- [Nice tmux Config](https://github.com/tony/tmux-config)
+- [Awesome tmux Config](https://github.com/tony/tmux-config)
