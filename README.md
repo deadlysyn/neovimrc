@@ -100,9 +100,9 @@ PlugInstall
 
 ## Resources & Inspiration
 
-- [vim-plug](https://github.com/junegunn/vim-plug)
 - [Ian Langworth's awesome VIM writeup](https://statico.github.io/vim3.html)
 - [Vim without NERD tree or CtrlP](https://gist.github.com/csswizardry/9a33342dace4786a9fee35c73fa5deeb)
+- [Colours in terminal](https://github.com/junegunn/vim-plug))
 - [Fira Code Font](https://github.com/tonsky/FiraCode)
 - [VimR: Neovim GUI](https://github.com/qvacua/vimr)
 - [Nice tmux Config](https://github.com/tony/tmux-config)
