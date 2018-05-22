@@ -1,6 +1,6 @@
 ![Neovim Logo](https://github.com/deadlysyn/neovimrc/blob/master/img/neovim-logo.png "Neovim")
 
-# An Opinionated Neovim Configuration
+# Opinionated Neovim Configuration
 
 I've been using vi and vim for over 20 years now. In that time, I've accumulated a lot of
 customizations. Aside from my personal settings, pre-baked configs -- including
