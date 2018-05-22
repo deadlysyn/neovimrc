@@ -1,5 +1,7 @@
 ![Neovim Logo](https://github.com/deadlysyn/neovimrc/blob/master/img/neovim-logo.png "Neovim")
 
+TODO: need TOC
+
 # Opinionated Neovim Configuration
 
 I've been using vi and vim for over 20 years now. In that time, I've accumulated a lot of
@@ -9,7 +11,7 @@ customizations. Aside from my personal settings, pre-baked configs -- including
 when combined with [tmux](https://github.com/tmux/tmux). These served me well for many years.
 
 When I decided to give [Neovim](https://neovim.io) a spin, I wanted to take the opportunity to
-reevaluate my choices -- removing plugins I didn't use, updating ones which had
+re-evaluate my choices -- removing plugins I didn't use, updating ones which had
 better alternatives (in my opinion), adjusting key bindings and other bits to my taste,
 and optimizing the environment for the languages I currently use most (Javascript and Go).
 
@@ -38,10 +40,10 @@ brew install iterm2
 brew install neovim
 brew tap caskroom/fonts
 brew cask install font-fira-code # ligature support
-brew install gawk
-brew install fzf
-brew install the_silver_searcher
-brew install python # need python3
+brew install fzf # fuzzy search
+brew install gawk # required by fzf-filemru
+brew install the_silver_searcher # ag required by ack.vim
+brew install python # python3 required by deoplete
 
 pip3 install neovim
 pip3 install --upgrade neovim
@@ -60,40 +62,84 @@ and you just need to remember `PlugInstall` and `PlugClean`.
 
 Read over the documentation for each of the included plugins for usage information.
 
+- [ack.vim](https://github.com/mileszs/ack.vim): Vim plugin for the Perl module / CLI script 'ack' (used for alias and command definitions, with `ackprg` mapped to `ag --vimgrep`)
+- [deoplete](https://github.com/Shougo/deoplete.nvim): Dark powered asynchronous completion framework for neovim/Vim8
 - [lightline](https://github.com/itchyny/lightline.vim): A light and configurable statusline/tabline plugin for Vim.
 - [neomake](https://github.com/neomake/neomake): Asynchronous linting and make framework for Neovim/Vim
-- [deoplete](https://github.com/Shougo/deoplete.nvim): Dark powered asynchronous completion framework for neovim/Vim8
-- [vim-gitgutter](https://github.com/airblade/vim-gitgutter): A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks
 - [fzf](https://github.com/junegunn/fzf): A command-line fuzzy finder
 - [fzf.vim](https://github.com/junegunn/fzf.vim): Useful bundle of fzf-based commands and mappings
 - [fzf-filemru](https://github.com/tweekmonster/fzf-filemru): File MRU with fzf.vim
 - [open_file_under_cursor.vim](https://github.com/amix/open_file_under_cursor.vim): Open file under cursor when pressing gf (if the text under the cursor is a path)
-- [ack.vim](https://github.com/mileszs/ack.vim): Vim plugin for the Perl module / CLI script 'ack' (used for alias and command definitions, with `ackprg` mapped to `ag --vimgrep`)
+- [ultisnips](https://github.com/SirVer/ultisnips): The ultimate snippet solution for Vim
+- [vim-snippets](https://github.com/honza/vim-snippets): vim-snipmate default snippets (Previously snipmate-snippets)
 - [vim-unimpaired](https://github.com/tpope/vim-unimpaired): pairs of handy bracket mappings
 - [vim-repeat](https://github.com/tpope/vim-repeat): enable repeating supported plugin maps with "."
 - [vim-surround](https://github.com/tpope/vim-surround): quoting/parenthesizing made simple
 - [vim-sleuth](https://github.com/tpope/vim-sleuth): Heuristically set buffer options
 - [vim-commentary](https://github.com/tpope/vim-commentary): comment stuff out
 - [vim-fugitive](https://github.com/tpope/vim-fugitive): a Git wrapper so awesome, it should be illegal
+- [vim-gitgutter](https://github.com/airblade/vim-gitgutter): A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks
 - [vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors): True Sublime Text style multiple selections for Vim
 - [vim-polyglot](https://github.com/sheerun/vim-polyglot): A solid language pack for Vim
-- [ultisnips](https://github.com/SirVer/ultisnips): The ultimate snippet solution for Vim
-- [vim-snippets](https://github.com/honza/vim-snippets): vim-snipmate default snippets (Previously snipmate-snippets)
 - [vim-go](https://github.com/fatih/vim-go): Go development plugin for Vim
 - [vim-javascript](https://github.com/pangloss/vim-javascript): Vastly improved Javascript indentation and syntax support in Vim
-- [vim-json](https://github.com/elzr/vim-json): A better JSON for Vim: distinct highlighting of keywords vs values, JSON-specific (non-JS) warnings, quote concealing. 
-
+- [vim-json](https://github.com/elzr/vim-json): A better JSON for Vim: distinct highlighting of keywords vs values, JSON-specific (non-JS) warnings, quote concealing
 
 ## Layout, Color & Themes
 
-layout inspired by amix/vimrc
-modular - can add/remove vim-plug plugins
+Unless `$KDG_HOME_CONFIG` points elsewhere, Neovim configuration resides in `~/.config/neovim`
+(like vim's `~/.vim'). The main file is `init.vim` (Neovim's equivalent of `.vimrc`), which
+simply sources a number of `*.vim` files. This makes things somewhat modular -- you can easily
+exclude parts of the configuration you don't use. There's also an install script which will
+let you install `simple` (ideal for DevOps/sysadmins) or `full` versions.
 
-color scheme/base16 plug... why not solarized
+Themes live in `~/.config/nvim/colors`. I know themes are often seen as unnecessary bling,
+but as something I spend many hours a day staring at, I find a well designed colorscheme
+essential to happiness. When done right, it relieves eyestrain through optimal contrast
+and boosts efficiency by better conveying important information.
+
+For many years I was a [solarized](http://ethanschoonover.com/solarized) user.
+Everyone's taste is different, but I still think it's a thoughtful design. Unfortunately, I'm a
+night owl and often find myself working late. With Night Shift now native in MacOS (thank you,
+[flux](https://justgetflux.com), I've found blue-heavy themes suffer as the day progresses. This
+got me looking for alternatives that offer similarly thoughtful design (balanced and consistant
+contrast, light and dark modes) in a different color palette.
+
+I spent some time looking at available themes (I really don't want to create my own), and
+the primary candidates I considered moving to were [gruvbox](https://github.com/morhetz/gruvbox)
+and [tomorrow](https://github.com/chriskempson/tomorrow-theme)... Both are beautiful, but
+I've currently settled on _Tomorrow_ for a few reasons:
+
+- Themes were available for all my tools (gruvbox is now too, just not in the official lightline repo)
+- More modes (light, dark, eighties, blue, etc.)
+- Stronger contrast in some areas (personal preference)
+
+where are themes for each componentn located
+
+### Truecolor
+
+While on this journey, I realized I really can't live without truecolor support. [Most
+modern terminals do it these days](https://github.com/junegunn/vim-plug). The differences
+range from subtle to glaring, but make for a better experience overall. While it's getting
+easier, referring to numerous threads online reveals making this work consistently is
+unfortunately more wizardry than one might think. While this repo configures Neovim itself
+in a way that should be appropriate, you'll need additional steps in your environment
+which will differ based on the terminal you use, whether you layer on tmux, etc.
+
+Here are things that seem to be working for me on MacOS + iterm2 + tmux + neovim:
+
+TODO: setup instructions/links
+
+# Ligatures
+
 font / ligatures
-truecolor
+enabling truecolor
+
+
 
 ## Installation
+
+...need install script
 
 vim-plug
 PlugInstall
@@ -102,7 +148,6 @@ PlugInstall
 
 - [Ian Langworth's awesome VIM writeup](https://statico.github.io/vim3.html)
 - [Vim without NERD tree or CtrlP](https://gist.github.com/csswizardry/9a33342dace4786a9fee35c73fa5deeb)
-- [Colours in terminal](https://github.com/junegunn/vim-plug))
 - [Fira Code Font](https://github.com/tonsky/FiraCode)
 - [VimR: Neovim GUI](https://github.com/qvacua/vimr)
 - [Nice tmux Config](https://github.com/tony/tmux-config)
