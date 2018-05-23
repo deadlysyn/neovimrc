@@ -12,6 +12,8 @@ When I decided to give [Neovim](https://neovim.io) a spin, I wanted to take the 
 re-evaluate my choices -- removing plugins I didn't use, updating ones which had
 better alternatives (in my opinion), adjusting key bindings and other bits to my taste,
 and optimizing the environment for the languages I currently use most (Javascript and Go).
+For better or worse, I also spend a lot of time staring at JSON and YAML and like
+appropriately tuned syntax highlighting.
 
 _This project is very opinionated._ When compared to more thorough projects like
 [amix/vim](https://github.com/amix/vimrc), I've stripped a lot of compatability code
@@ -31,16 +33,16 @@ Out of the box, this configuration requires the following:
 
 ```
 # My preferences
-brew install tmux
 brew install iterm2
+brew install tmux
+brew tap caskroom/fonts
+brew cask install font-fira-code # ligature support
 
 # Hard dependencies
 brew install neovim
-brew tap caskroom/fonts
-brew cask install font-fira-code # ligature support
 brew install fzf # fuzzy search
 brew install gawk # required by fzf-filemru
-brew install the_silver_searcher # ag required by ack.vim
+brew install the_silver_searcher # grep replacement
 brew install python # python3 required by deoplete
 
 pip3 install --user neovim
@@ -51,6 +53,9 @@ npm install -g eslint
 npm install -g prettier
 ```
 
+This is still a work in progress, so if you find something missing please let me know...
+A lot more can be required, depending how far down the completion rabit hole you want to go!
+
 ## Plugins
 
 I use [vim-plug](https://github.com/junegunn/vim-plug) for plugin management. It's fairly
@@ -58,12 +63,14 @@ minimalist while maintaining a user-friendly interface -- for the most part, you
 need to remember `PlugInstall` and `PlugClean`. Installation is a breeze, and the install
 script will take care of it for you.
 
-A future effort may refactor using [dein](https://github.com/Shougo/dein.vim), or perhaps
-[native package management](https://shapeshed.com/vim-packages) since that's a thing now.
+A future effort may refactor using [dein](https://github.com/Shougo/dein.vim) since it's
+reportedly faster, or perhaps [native package management](https://shapeshed.com/vim-packages)
+since that's a thing now and fewer dependencies are awesome.
 
 ### Included Plugins
 
-Read over the documentation for each of the included plugins for usage information.
+Read over the documentation for each of the included plugins for usage information...
+Custom/common keymaps will be documented below.
 
 - [ack.vim](https://github.com/mileszs/ack.vim): Vim plugin for the Perl module / CLI script 'ack' (used for alias and command definitions, with `ackprg` mapped to `ag --vimgrep`)
 - [deoplete](https://github.com/Shougo/deoplete.nvim): Dark powered asynchronous completion framework for neovim/Vim8

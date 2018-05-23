@@ -2,8 +2,7 @@
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Configure python handlers
-let g:python_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
+"let g:python3_host_prog = '/usr/local/bin/python3'
 
 " Enable filetype plugins
 filetype plugin on
@@ -19,8 +18,10 @@ nmap <leader>w :w!<cr>
 " write file contents when calling :make
 set autowrite
 
-" Let plugins show output after 200ms
-set updatetime=200
+" Let plugins show output after 500ms
+" Note: Some plugins suggest lowering this, but going too
+" low can cause highlighting glitches. YMMV.
+set updatetime=500
 
 " Make yank, etc go to standard clipboard
 set clipboard=unnamed
@@ -31,7 +32,8 @@ set showtabline=2
 " Don't use GUI tabline
 set guioptions-=e
 
-" I find folding confusing
+" I find folding confusing, and it causes glitches in
+" some plugins.
 set nofoldenable
 
 " disable automatic comment insertion
@@ -40,7 +42,6 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 
 " See 10 lines around the cursor when moving vertically
 set scrolloff=10
@@ -93,7 +94,8 @@ set cursorcolumn
 set list
 
 " Highlight end of line whitespace
-highlight WhitespaceEOL ctermbg=red guibg=red
+"highlight WhitespaceEOL ctermbg=red guibg=red
+highlight WhitespaceEOL ctermbg=red
 match WhitespaceEOL /\s\+$/
 
 " performance tuning
@@ -109,10 +111,6 @@ set background=dark
 " not used in terminal (neo)vim
 "set guifont=Fira\ Code:h12
 colorscheme base16-tomorrow-night
-
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
-set termencoding=utf-8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac

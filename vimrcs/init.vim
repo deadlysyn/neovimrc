@@ -1,3 +1,9 @@
+" I inheirit these from my terminal. If you adjust, do it at the top
+" of your config or you may run into edge cases.
+"set encoding=utf8
+"set termencoding=utf-8
+
+" https://github.com/junegunn/vim-plug
 call plug#begin('~/.config/nvim/plugged')
 Plug 'https://github.com/itchyny/lightline.vim.git'
 Plug 'https://github.com/neomake/neomake.git'
@@ -20,10 +26,14 @@ Plug 'https://github.com/SirVer/ultisnips.git'
 Plug 'https://github.com/honza/vim-snippets.git'
 Plug 'https://github.com/fatih/vim-go.git', { 'do': ':GoUpdateBinaries', 'tag': 'v1.17' }
 Plug 'https://github.com/pangloss/vim-javascript.git'
+Plug 'https://github.com/mxw/vim-jsx.git'
 Plug 'https://github.com/elzr/vim-json.git'
+Plug 'https://github.com/gabrielelana/vim-markdown.git'
+Plug 'https://github.com/stephpy/vim-yaml.git'
 call plug#end()
 
-source ~/.config/nvim/00-simple.vim
-source ~/.config/nvim/05-full.vim
-source ~/.config/nvim/10-plugin_conf.vim
-source ~/.config/nvim/99-custom_conf.vim
+" Keep config modular
+source ~/.config/nvim/includes/00-simple.vim
+source ~/.config/nvim/includes/05-full.vim
+source ~/.config/nvim/includes/10-plugin_conf.vim
+source ~/.config/nvim/includes/99-custom_conf.vim
