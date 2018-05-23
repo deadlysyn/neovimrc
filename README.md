@@ -124,15 +124,11 @@ I've currently settled on _Tomorrow_ for a few reasons:
 
 Out of the box, I use the [Tomorrow Night](https://github.com/chriskempson/base16-tomorrow-scheme)
 colorscheme based on [base16](https://github.com/chriskempson/base16) (an amazing set of styling
-guidelines and theme builder framework).
-
-Aside from theming your terminal
+guidelines and theme builder framework). Aside from theming your terminal
 ([which is left as an exercise for the reader](https://github.com/martinlindhe/base16-iterm2)),
 we just need to ensure Neovim itself and [lightline](https://github.com/itchyny/lightline.vim)
-are consistently themed.
-
-The first is addressed by `~/.config/nvim/colors/base16-tomorrow-night.vim`, and the latter
-by `~/.config/nvim/plugged/lightline.vim/autoload/lightline/colorscheme/Tomorrow_Night.vim`
+are consistently themed. The first is addressed by `~/.config/nvim/colors/base16-tomorrow-night.vim`,
+and the latter by `~/.config/nvim/plugged/lightline.vim/autoload/lightline/colorscheme/Tomorrow_Night.vim`
 (only present after `PlugInstall`). Feel free to adjust or override these as needed.
 
 ### Truecolor
@@ -152,7 +148,7 @@ utility there you can use to verify proper behavior, and
 
 Historically, support was spotty and this seemed to be black magic...  With any recent
 combination of tools it should be straightforward. Here are things that seem to be working for me
-on MacOS + iterm2 + tmux + neovim:
+on MacOS + iTerm2 + tmux + Neovim:
 
 ```
 # iTerm
