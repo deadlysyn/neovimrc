@@ -19,9 +19,10 @@ nmap <leader>w :w!<cr>
 " write file contents when calling :make
 set autowrite
 
-set updatetime=100
+" Let plugins show output after 200ms
+set updatetime=200
 
-" make yank, etc go to standard clipboard
+" Make yank, etc go to standard clipboard
 set clipboard=unnamed
 
 " Show tabline
@@ -30,11 +31,19 @@ set showtabline=2
 " Don't use GUI tabline
 set guioptions-=e
 
+" I find folding confusing
+set nofoldenable
+
+" disable automatic comment insertion
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 10 lines to the cursor - when moving vertically using j/k
-set so=10
+
+
+" See 10 lines around the cursor when moving vertically
+set scrolloff=10
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
@@ -72,10 +81,9 @@ set tm=500
 set warn nu
 set t_kb=
 
-" Turn off auto adding comments on next line
-" http://vimdoc.sourceforge.net/htmldoc/change.html#fo-table
-set fo=tcq
+" Enable modelines
 set modeline
+set modelines=5
 
 " Crosshair-highlight cursor
 set cursorline
@@ -113,7 +121,6 @@ set ffs=unix,dos,mac
 set termguicolors
 
 set fillchars+=stl:\ ,stlnc:\
-
 hi LineNr term=none ctermfg=none
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -137,13 +144,15 @@ set expandtab
 set shiftwidth=4
 set tabstop=4
 
-" Linebreak on 200 characters
-set lbr
-set tw=200
+" Soft wrap lines
+set wrap
+set linebreak
 
-set ai "Auto indent
-set si "Smart indent
-set wrap "Wrap lines
+"Auto indent
+set ai
+
+"Smart indent
+set si
 
 " Smart indenting after certain words
 set cinwords=if,elif,else,for,while,try,except,finally,def,class
@@ -251,6 +260,9 @@ endif
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set spelllang=en
+set spellfile=~/.config/nvim/spell/en.utf-8.add
+
 " Pressing ,ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>
 
@@ -259,6 +271,15 @@ map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
+
+" Turn on spell-checking for select filetypes
+autocmd BufRead,BufNewFile *.md setlocal spell
+autocmd BufRead,BufNewFile *.rst setlocal spell
+autocmd BufRead,BufNewFile *.html setlocal spell
+
+" git commits
+autocmd FileType gitcommit setlocal spell
+autocmd Filetype gitcommit setlocal spell textwidth=70
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc

@@ -11,24 +11,13 @@ autocmd! bufwritepost ~/.config/nvim/99-custom_conf.vim source ~/.config/nvim/99
 cno $h e ~/
 cno $d e ~/Desktop/
 cno $j e ./
-cno $c e <C-\>eCurrentFileDir("e")<cr>
-
-" $q is super useful when browsing on the command line
-" it deletes everything until the last slash
-cno $q <C-\>eDeleteTillSlash()<cr>
 
 " Bash like keys for the command line
 cnoremap <C-A>		<Home>
 cnoremap <C-E>		<End>
 cnoremap <C-K>		<C-U>
-
 cnoremap <C-P> <Up>
 cnoremap <C-N> <Down>
-
-" Map ½ to something useful
-map ½ $
-cmap ½ $
-imap ½ $
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Parenthesis/bracket
@@ -58,31 +47,12 @@ iab xdate <c-r>=strftime("%y/%m/%d %H:%M:%S")<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Helper functions
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-func! DeleteTillSlash()
-    let g:cmd = getcmdline()
-    let g:cmd_edited = substitute(g:cmd, "\\(.*\[/\]\\).*", "\\1", "")
-
-    if g:cmd == g:cmd_edited
-        let g:cmd_edited = substitute(g:cmd, "\\(.*\[/\]\\).*/", "\\1", "")
-    endif
-
-    return g:cmd_edited
-endfunc
-
-func! CurrentFileDir(cmd)
-    return a:cmd . " " . expand("%:p:h") . "/"
-endfunc
-
 """"""""""""""""""""""""""""""
 " => Bash section
 """"""""""""""""""""""""""""""
-
-" Fixes syntax errors in .sh
-let is_bash=1
+" Correct highlighting for bash files
+au BufRead,BufNewFile *bash* let g:is_bash=1
+au BufRead,BufNewFile *bash* setf sh
 
 """"""""""""""""""""""""""""""
 " => Python section

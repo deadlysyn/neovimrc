@@ -83,12 +83,24 @@ nnoremap <c-p> :FilesMru --tiebreak=end<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Git gutter (Git diff)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:gitgutter_enabled=1
-let g:gitgutter_max_signs = 200
+" Where symbols are displayed
 set signcolumn=yes
+
+" Display symbols for git diffs
+let g:gitgutter_enabled=1
+
+" Turn symbols off at some point for better performance
+let g:gitgutter_max_signs = 500
+
+" Easily turn gitgutter on/off
 nnoremap <silent> <leader>d :GitGutterToggle<cr>
+
+" Use ag vs grep
 let g:gitgutter_grep = 'ag'
+
+" Highlight entire line on change
 let g:gitgutter_highlight_lines = 1
+
 let g:gitgutter_sign_added = '✚'
 let g:gitgutter_sign_modified = '∓'
 let g:gitgutter_sign_modified_removed = '∓'
