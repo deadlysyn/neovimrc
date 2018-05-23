@@ -1,9 +1,6 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Configure python handlers
-"let g:python3_host_prog = '/usr/local/bin/python3'
-
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
@@ -14,6 +11,9 @@ let mapleader = " "
 
 " Fast saving
 nmap <leader>w :w!<cr>
+
+" Use Unix as the standard file type
+set ffs=unix,dos,mac
 
 " write file contents when calling :make
 set autowrite
@@ -107,19 +107,12 @@ set noshowmode noshowcmd noruler
 " Enable syntax highlighting
 syntax enable
 
-set background=dark
-" not used in terminal (neo)vim
-"set guifont=Fira\ Code:h12
-colorscheme base16-tomorrow-night
-
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
-
 " Truecolor support
 set termguicolors
 
-set fillchars+=stl:\ ,stlnc:\
-hi LineNr term=none ctermfg=none
+" TODO
+"set fillchars+=stl:\ ,stlnc:\
+"hi LineNr term=none ctermfg=none
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo

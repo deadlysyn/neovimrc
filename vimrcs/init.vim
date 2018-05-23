@@ -6,6 +6,7 @@
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.config/nvim/plugged')
 Plug 'https://github.com/itchyny/lightline.vim.git'
+Plug 'https://github.com/chriskempson/base16-vim.git'
 Plug 'https://github.com/neomake/neomake.git'
 Plug 'https://github.com/Shougo/deoplete.nvim.git', { 'do': ':UpdateRemotePlugins' }
 Plug 'https://github.com/airblade/vim-gitgutter.git'
@@ -33,7 +34,7 @@ Plug 'https://github.com/stephpy/vim-yaml.git'
 call plug#end()
 
 " Keep config modular
-source ~/.config/nvim/includes/00-simple.vim
-source ~/.config/nvim/includes/05-full.vim
-source ~/.config/nvim/includes/10-plugin_conf.vim
-source ~/.config/nvim/includes/99-custom_conf.vim
+source ~/.config/nvim/include/00-simple.vim
+source ~/.config/nvim/include/05-full.vim
+source ~/.config/nvim/include/10-plugin_conf.vim
+source ~/.config/nvim/include/99-custom_conf.vim
