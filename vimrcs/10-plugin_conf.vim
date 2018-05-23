@@ -40,6 +40,31 @@ map <leader>p :cp<cr>
 " => deoplete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#enable_smart_case = 1
+
+" disable autocomplete by default
+let b:deoplete_disable_auto_complete=1
+let g:deoplete_disable_auto_complete=1
+call deoplete#custom#buffer_option('auto_complete', v:false)
+
+if !exists('g:deoplete#omni#input_patterns')
+    let g:deoplete#omni#input_patterns = {}
+endif
+
+" Disable the candidates in Comment/String syntaxes.
+call deoplete#custom#source('_',
+    \ 'disabled_syntaxes', ['Comment', 'String'])
+
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" TODO: set sources
+let g:deoplete#sources = {}
+let g:deoplete#sources.python = ['LanguageClient']
+let g:deoplete#sources.python3 = ['LanguageClient']
+let g:deoplete#sources.go = ['LanguageClient']
+let g:deoplete#sources.javascript = ['LanguageClient']
+let g:deoplete#sources.vim = ['vim']
+let g:deoplete#sources.zsh = ['zsh']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => fzf / fzf.vim
@@ -66,9 +91,9 @@ let g:gitgutter_grep = 'ag'
 let g:gitgutter_highlight_lines = 1
 let g:gitgutter_sign_added = '✚'
 let g:gitgutter_sign_modified = '∓'
+let g:gitgutter_sign_modified_removed = '∓'
 let g:gitgutter_sign_removed = '∅'
 let g:gitgutter_sign_removed_first_line = '∅'
-let g:gitgutter_sign_modified_removed = '∅'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => lightline
