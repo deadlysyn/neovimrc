@@ -24,6 +24,12 @@ set updatetime=100
 " make yank, etc go to standard clipboard
 set clipboard=unnamed
 
+" Show tabline
+set showtabline=2
+
+" Don't use GUI tabline
+set guioptions-=e
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
