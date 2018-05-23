@@ -84,7 +84,8 @@ set noshowmode noshowcmd noruler
 syntax enable
 
 set background=dark
-set guifont=Fira\ Code:h12
+" not used in terminal (neo)vim
+"set guifont=Fira\ Code:h12
 colorscheme base16-tomorrow-night
 
 " Set utf8 as standard encoding and en_US as the standard language

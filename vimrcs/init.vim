@@ -23,10 +23,9 @@ Plug 'https://github.com/pangloss/vim-javascript.git'
 Plug 'https://github.com/elzr/vim-json.git'
 call plug#end()
 
-source ~/.config/nvim/basic.vim
-source ~/.config/nvim/extended.vim
-source ~/.config/nvim/filetypes.vim
-source ~/.config/nvim/plugins_config.vim
+source ~/.config/nvim/00-simple.vim
+source ~/.config/nvim/05-full.vim
+source ~/.config/nvim/10-plugin_configs.vim
 
 " run neomake when reading/writing/insert.
 call neomake#configure#automake('nrwi', 500)
