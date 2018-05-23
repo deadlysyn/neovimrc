@@ -1,21 +1,8 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => UI related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set gfn=Fira\ Code:12
-set background=dark
-colorscheme base16-tomorrow-night
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Fast editing and reloading of custom configs
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>e :e! ~/.config/nvim/my_configs.vim<cr>
 autocmd! bufwritepost ~/.config/nvim/my_configs.vim source ~/.config/nvim/my_configs.vim
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Turn persistent undo on
-"    means that you can undo even when you close a buffer/VIM
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set undofile
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Command mode related
@@ -64,7 +51,7 @@ inoremap $e ""<esc>i
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General abbreviations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
+iab xdate <c-r>=strftime("%y/%m/%d %H:%M:%S")<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Omni complete functions

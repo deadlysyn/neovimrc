@@ -82,7 +82,10 @@ set noshowmode noshowcmd noruler
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 syntax enable
+
 set background=dark
+set guifont=Fira\ Code:h12
+colorscheme base16-tomorrow-night
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
@@ -90,8 +93,6 @@ set termencoding=utf-8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
-
-set guifont=Fira\ Code:12
 
 " Truecolor support
 set termguicolors
@@ -107,6 +108,9 @@ hi LineNr term=none ctermfg=none
 set nobackup
 set nowb
 set noswapfile
+
+" Turn persistent undo on
+set undofile
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related
