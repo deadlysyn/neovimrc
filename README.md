@@ -4,7 +4,7 @@
 
 # Opinionated Neovim Configuration
 
-I've been using vi and vim for over 20 years now. In that time, I've accumulated a lot of
+I've been using vi(m) for over 20 years. In that time, I've accumulated a lot of
 customizations. Aside from my personal settings, pre-baked configs -- including
 "[The Ultimate Vim Configuration](https://github.com/amix/vimrc)" and
 [vim-go](https://github.com/fatih/vim-go) -- provide a lightweight IDE
@@ -43,12 +43,15 @@ brew cask install font-fira-code # ligature support
 brew install fzf # fuzzy search
 brew install gawk # required by fzf-filemru
 brew install the_silver_searcher # ag required by ack.vim
+brew install python2 # python3 required by deoplete
 brew install python # python3 required by deoplete
 
+pip install --user neovim
+pip install --upgrade neovim
 pip3 install --user neovim
 pip3 install --upgrade neovim
 
-# Install/configure your favorite linters...
+# Install/configure your favorite linters and formatters..
 npm install -g eslint
 npm install -g prettier
 ```
@@ -64,7 +67,7 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 ```
 
 A future effort may refactor using [dein](https://github.com/Shougo/dein.vim) or perhaps
-[native package management](https://shapeshed.com/vim-packages/).
+[native package management](https://shapeshed.com/vim-packages).
 
 ### Included Plugins
 
@@ -98,8 +101,9 @@ Read over the documentation for each of the included plugins for usage informati
 Unless `$KDG_HOME_CONFIG` points elsewhere, Neovim configuration resides in `~/.config/neovim`
 (like vim's `~/.vim`). The main file is `init.vim` (Neovim's equivalent of `.vimrc`), which
 simply sources a number of `*.vim` files. This makes things somewhat modular -- you can easily
-exclude parts of the configuration you don't use. There's also an install script which will
-let you install `simple` (ideal for DevOps/sysadmins) or `full` versions.
+edit `init.vim` and exclude parts of the configuration you don't use. If you like everything
+and just want to override a couple settings or extend the defaults, you can just drop
+custom bits in `99-custom_conf.vim`.
 
 Themes live in `~/.config/nvim/colors`. I know themes are often seen as unnecessary bling,
 but as something I spend many hours a day staring at, I find a well designed colorscheme
@@ -109,7 +113,7 @@ and boosts efficiency by better conveying important information.
 For many years I was a [solarized](http://ethanschoonover.com/solarized) user.
 Everyone's taste is different, but I still think it's a thoughtful design. Unfortunately, I'm a
 night owl and often find myself working late. With Night Shift now native in MacOS (thank you,
-[flux](https://justgetflux.com), I've found blue-heavy themes suffer as the day progresses. This
+[flux](https://justgetflux.com)), I've found blue-heavy themes suffer as the day progresses. This
 got me looking for alternatives that offer similarly thoughtful design (balanced and consistant
 contrast, light and dark modes) in a different color palette.
 
@@ -121,43 +125,43 @@ I've currently settled on _Tomorrow_ for a few reasons:
 - Themes were available for all my tools (gruvbox is now too, just not in the official lightline repo)
 - More modes (light, dark, eighties, blue, etc.)
 - Stronger contrast in some areas (personal preference)
+- Mature project with [good community feedback](https://www.slant.co/topics/358/~best-color-themes-for-text-editors)
 
-### Base16
+### Base16 FTW
 
 Out of the box, I use the [Tomorrow Night](https://github.com/chriskempson/base16-tomorrow-scheme)
 colorscheme based on [base16](https://github.com/chriskempson/base16) (an amazing set of styling
 guidelines and theme builder framework). Aside from theming your terminal
 ([which is left as an exercise for the reader](https://github.com/martinlindhe/base16-iterm2)),
 we just need to ensure Neovim itself and [lightline](https://github.com/itchyny/lightline.vim)
-are consistently themed. The first is addressed by `~/.config/nvim/colors/base16-tomorrow-night.vim`,
-and the latter by `~/.config/nvim/plugged/lightline.vim/autoload/lightline/colorscheme/Tomorrow_Night.vim`
+are consistently styled. The first is addressed by `~/.config/nvim/colors/base16-tomorrow-night.vim`,
+(pulled in by `install.sh`) and the latter by
+`~/.config/nvim/plugged/lightline.vim/autoload/lightline/colorscheme/Tomorrow_Night.vim`
 (only present after `PlugInstall`). Feel free to adjust or override these as needed.
 
 ### Truecolor
 
-While on this journey, I realized I really can't live without truecolor support. [Most
-modern terminals do it these days](https://github.com/junegunn/vim-plug). The differences
-range from subtle to glaring, but make for a better experience overall. While it's getting
-easier, referring to numerous threads online reveals making this work consistently is
-unfortunately more wizardry than one might think. While this repo configures Neovim itself
-in a way that should be appropriate, you'll need additional steps in your environment
-which will differ based on the terminal you use, whether you layer on tmux, etc.
+I've realized I enjoy "truecolor" support, and luckily
+[most modern terminals do it](https://github.com/junegunn/vim-plug). The differences
+range from subtle to glaring, but make for a better experience overall. While this repo
+configures Neovim itself in a way that should be appropriate, you may need additional
+steps in your environment which will differ based on the terminal you use, whether you
+layer on tmux, etc.
 
 Along with truecolor support, I mostly live in the commandline so use
-[base16-shell](https://github.com/chriskempson/base16-shell). There's also a useful `colortest`
-utility there you can use to verify proper behavior, and
+[base16-shell](https://github.com/chriskempson/base16-shell) to preserve the original ANSI colors.
+There's also a useful `colortest` utility you can use to verify proper behavior, and
 [a helpful troubleshooting guide](https://recordnotfound.com/base16-vim-chriskempson-31016).
 
 Historically, support was spotty and this seemed to be black magic...  With any recent
-combination of tools it should be straightforward. Here are things that seem to be working for me
-on MacOS + iTerm2 + tmux + Neovim:
+combination of tools it should be straightforward. This is working for me:
 
 ```
 # iTerm
 Ensure Settings > Profiles > Terminal > Report Terminal Type == xterm-256color
 
 # tmux.conf
-# some sources refer to "tmux-256color" but didn't work for me
+# some sources refer to "tmux-256color" which didn't work when I tested
 set -g default-terminal "screen-256color"
 set-option -ga terminal-overrides ",screen-256color:Tc"
 
@@ -170,13 +174,21 @@ Inside iTerm and tmux `echo $COLORTERM` returns `truecolor`.
 ## Ligatures
 
 After years with [Source Code Pro](https://github.com/adobe-fonts/source-code-pro), I've moved to
-[Fira Code Font](https://github.com/tonsky/FiraCode) not only because it is beautiful,
-but also for ligature support. Aside from installing the font, be sure to select it and
-enable ligatures via `iTerm Settings > Profiles > Text > Font`.
+[Fira Code](https://github.com/tonsky/FiraCode) mainly for
+[ligature support](https://medium.com/larsenwork-andreas-larsen/ligatures-coding-fonts-5375ab47ef8e).
+This is all the rage these days, but I feel it's a subjective setting. Some feel it makes their code
+easier to read, I resisted for quite awhile because I felt it actually made some things harder to read.
+Finally decided to give it a spin in this config, and chose Fira Code because
+[it is one of the top-reviewed fonts with ligature support](https://www.slant.co/topics/5611/~monospace-programming-fonts-with-ligatures).
+Aside from installing the font, be sure to select it and enable ligatures via `iTerm Settings > Profiles > Text > Font`.
 
 ## Installation
 
-TODO: install script
+TODO: write/document install script
+
+## Keymapping
+
+TODO
 
 ## Terminal Thoughts
 
