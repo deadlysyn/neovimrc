@@ -16,7 +16,13 @@ let mapleader = " "
 " Fast saving
 nmap <leader>w :w!<cr>
 
+" write file contents when calling :make
+set autowrite
+
 set updatetime=100
+
+" make yank, etc go to standard clipboard
+set clipboard=unnamed
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -144,7 +150,6 @@ set cinwords=if,elif,else,for,while,try,except,finally,def,class
 vnoremap <silent> * :<C-u>call VisualSelection('', '')<CR>/<C-R>=@/<CR><CR>
 vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -181,7 +186,6 @@ map <leader>t<leader> :tabnext
 let g:lasttab = 1
 nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
 au TabLeave * let g:lasttab = tabpagenr()
-
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
