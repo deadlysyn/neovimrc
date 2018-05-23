@@ -1,5 +1,3 @@
-**NOTE: This repo is a work in progress.**
-
 ![Neovim Logo](https://github.com/deadlysyn/neovimrc/blob/master/img/neovim-logo.png "Neovim")
 
 # Opinionated Neovim Configuration
@@ -43,11 +41,8 @@ brew cask install font-fira-code # ligature support
 brew install fzf # fuzzy search
 brew install gawk # required by fzf-filemru
 brew install the_silver_searcher # ag required by ack.vim
-brew install python2 # python3 required by deoplete
 brew install python # python3 required by deoplete
 
-pip install --user neovim
-pip install --upgrade neovim
 pip3 install --user neovim
 pip3 install --upgrade neovim
 
@@ -58,16 +53,13 @@ npm install -g prettier
 
 ## Plugins
 
-I use [vim-plug](https://github.com/junegunn/vim-plug) for plugin management. It's minimalist,
-and you just need to remember `PlugInstall` and `PlugClean`. Installation is a breeze:
+I use [vim-plug](https://github.com/junegunn/vim-plug) for plugin management. It's fairly
+minimalist while maintaining a user-friendly interface -- for the most part, you just
+need to remember `PlugInstall` and `PlugClean`. Installation is a breeze, and the install
+script will take care of it for you.
 
-```
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-```
-
-A future effort may refactor using [dein](https://github.com/Shougo/dein.vim) or perhaps
-[native package management](https://shapeshed.com/vim-packages).
+A future effort may refactor using [dein](https://github.com/Shougo/dein.vim), or perhaps
+[native package management](https://shapeshed.com/vim-packages) since that's a thing now.
 
 ### Included Plugins
 
@@ -94,7 +86,10 @@ Read over the documentation for each of the included plugins for usage informati
 - [vim-polyglot](https://github.com/sheerun/vim-polyglot): A solid language pack for Vim
 - [vim-go](https://github.com/fatih/vim-go): Go development plugin for Vim
 - [vim-javascript](https://github.com/pangloss/vim-javascript): Vastly improved Javascript indentation and syntax support in Vim
+- [vim-jsx](https://github.com/mxw/vim-jsx): React JSX syntax highlighting and indenting for vim.
 - [vim-json](https://github.com/elzr/vim-json): A better JSON for Vim: distinct highlighting of keywords vs values, JSON-specific (non-JS) warnings, quote concealing
+- [vim-markdown](https://github.com/gabrielelana/vim-markdown): Markdown for Vim: a complete environment to create Markdown files with a syntax highlight that doesn't suck!
+- [vim-yaml](https://github.com/stephpy/vim-yaml): Override vim syntax for yaml files
 
 ## Layout, Color & Themes
 
