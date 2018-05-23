@@ -54,7 +54,15 @@ npm install -g prettier
 ## Plugins
 
 I use [vim-plug](https://github.com/junegunn/vim-plug) for plugin management. It's minimalist,
-and you just need to remember `PlugInstall` and `PlugClean`.
+and you just need to remember `PlugInstall` and `PlugClean`. Installation is a breeze:
+
+```
+curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
+
+A future effort may refactor using [dein](https://github.com/Shougo/dein.vim) or perhaps
+[native package management](https://shapeshed.com/vim-packages/).
 
 ### Included Plugins
 
