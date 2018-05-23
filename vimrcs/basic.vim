@@ -1,6 +1,10 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Configure python handlers
+let g:python_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
 " Enable filetype plugins
 filetype plugin on
 filetype indent on
@@ -12,23 +16,15 @@ let mapleader = ","
 " Fast saving
 nmap <leader>w :w!<cr>
 
-" :W sudo saves the file
-" (useful for handling the permission-denied error)
-command W w !sudo tee % > /dev/null
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 7 lines to the cursor - when moving vertically using j/k
+" Set 10 lines to the cursor - when moving vertically using j/k
 set so=10
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
-if has("win16") || has("win32")
-    set wildignore+=.git\*,.hg\*,.svn\*
-else
-    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-endif
+set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 
 " A buffer becomes hidden when it is abandoned
 set hid
@@ -59,6 +55,28 @@ set novisualbell
 set t_vb=
 set tm=500
 
+set warn nu
+set t_kb=
+
+" Turn off auto adding comments on next line
+" http://vimdoc.sourceforge.net/htmldoc/change.html#fo-table
+set fo=tcq
+set modeline
+
+" Crosshair-highlight cursor
+set cursorline
+set cursorcolumn
+
+" Highlight unwanted spaces
+set list
+
+" Highlight end of line whitespace
+highlight WhitespaceEOL ctermbg=red guibg=red
+match WhitespaceEOL /\s\+$/
+
+" performance tuning
+set noshowmode noshowcmd noruler
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Colors and Fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -68,9 +86,19 @@ set background=dark
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
+set termencoding=utf-8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
+
+set guifont=Fira\ Code:12
+
+" Truecolor support
+set termguicolors
+
+set fillchars+=stl:\ ,stlnc:\
+
+hi LineNr term=none ctermfg=none
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
@@ -90,13 +118,16 @@ set expandtab
 set shiftwidth=4
 set tabstop=4
 
-" Linebreak on 500 characters
+" Linebreak on 200 characters
 set lbr
-set tw=500
+set tw=200
 
 set ai "Auto indent
 set si "Smart indent
 set wrap "Wrap lines
+
+" Smart indenting after certain words
+set cinwords=if,elif,else,for,while,try,except,finally,def,class
 
 """"""""""""""""""""""""""""""
 " => Visual mode related

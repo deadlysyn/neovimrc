@@ -28,9 +28,6 @@ source ~/.config/nvim/extended.vim
 source ~/.config/nvim/filetypes.vim
 source ~/.config/nvim/plugins_config.vim
 
-let g:python_host_prog = '/usr/local/bin/python'
-let g:python3_host_prog = '/usr/local/bin/python3'
-
 " run neomake when reading/writing/insert.
 call neomake#configure#automake('nrwi', 500)
 let g:neomake_serialize = 1
@@ -41,32 +38,17 @@ nnoremap <c-p> :FilesMru --tiebreak=end<cr>
 nnoremap <leader>f :Files<CR>
 nnoremap <leader>b :Buffers<CR>
 
-set guifont=Fira\ Code:12
-set termencoding=utf-8
-set termguicolors
-set fillchars+=stl:\ ,stlnc:\
 
 " Fixes syntax errors in .sh
 let is_bash=1
-
-hi LineNr term=none ctermfg=none
 
 if filereadable(expand("~/.vimrc_background"))
   "let base16colorspace=256
   source ~/.vimrc_background
 endif
 
-" Highlight end of line whitespace.
-highlight WhitespaceEOL ctermbg=red guibg=red
-match WhitespaceEOL /\s\+$/
-
-set t_kb=
-
-" turn off auto adding comments on next line
-" so you can cut and paste reliably
-" http://vimdoc.sourceforge.net/htmldoc/change.html#fo-table
-set fo=tcq
-set modeline
+" write file contents when calling :make
+set autowrite
 
 " Set up go syntax highlighting
 au BufRead,BufNewFile *.go set filetype=go
@@ -79,23 +61,8 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
 
-set warn nu
-
-" VIM Specific Commands
-set list
-
-" cursor highlight
-set cursorline
-set cursorcolumn
-
-" Smart indenting after certain words
-set smartindent cinwords=if,elif,else,for,while,try,except,finally,def,class
-
 " don't check for go-vim binaries on each run to speed things up
 let g:go_disable_autoinstall = 0
-
-" write file contents when calling :make
-set autowrite
 
 " make jumping between errors in go-vim easier
 map <C-n> :cnext<CR>
@@ -142,9 +109,6 @@ au FileType yaml setlocal tabstop=2 expandtab shiftwidth=2 softtabstop=2
 
 " make yank, etc go to standard clipboard
 set clipboard=unnamed
-
-" performance tuning
-set noshowmode noshowcmd noruler
 
 " vim-javascript
 let g:javascript_plugin_flow = 1
