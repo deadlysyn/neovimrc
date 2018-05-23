@@ -1,3 +1,5 @@
+**NOTE: This repo is a work in progress.**
+
 ![Neovim Logo](https://github.com/deadlysyn/neovimrc/blob/master/img/neovim-logo.png "Neovim")
 
 # Opinionated Neovim Configuration
