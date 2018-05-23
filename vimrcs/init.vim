@@ -26,6 +26,7 @@ call plug#end()
 source ~/.config/nvim/00-simple.vim
 source ~/.config/nvim/05-full.vim
 source ~/.config/nvim/10-plugin_configs.vim
+source ~/.config/nvim/99-plugin_configs.vim
 
 " run neomake when reading/writing/insert.
 call neomake#configure#automake('nrwi', 500)
