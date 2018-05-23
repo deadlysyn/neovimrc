@@ -182,7 +182,8 @@ due to [this interesting writeup](https://danluu.com/term-latency).
 
 ## Resources & Inspiration
 
-- [Ian Langworth's amazing VIM writeup](https://statico.github.io/vim3.html)
+- [Ian Langworth's amazing Vim writeup](https://statico.github.io/vim3.html)
+- [Afnan Enayet's Neovim Setup](https://afnan.io/2018-04-12/my-neovim-development-setup)
 - [Vim without NERD tree or CtrlP](https://gist.github.com/csswizardry/9a33342dace4786a9fee35c73fa5deeb)
 - [VimR: Neovim GUI](https://github.com/qvacua/vimr)
 - [Awesome tmux Config](https://github.com/tony/tmux-config)
