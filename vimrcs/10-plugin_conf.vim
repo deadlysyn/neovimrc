@@ -97,7 +97,11 @@ let g:lightline = {
       \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
       \ },
       \ 'separator': { 'left': ' ', 'right': ' ' },
-      \ 'subseparator': { 'left': ' ', 'right': ' ' }
+      \ 'subseparator': { 'left': ' ', 'right': ' ' },
+      \ 'tabline': {
+      \   'left': [ ['tabs'] ],
+      \   'right': [ ['close'] ]
+      \ }
       \ }
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
