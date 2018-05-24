@@ -9,7 +9,7 @@ umask 022
 function grab() {
     url="$1"
     path="$2"
-    curl -fLo "$path" --create-dirs "$url" && echo "$url --> $path"
+    curl -sfLo "$path" --create-dirs "$url" && echo "$url --> $path"
 }
 
 # Install vim-plug
