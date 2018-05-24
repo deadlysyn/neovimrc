@@ -12,17 +12,17 @@ When I decided to give [Neovim](https://neovim.io) a spin, I wanted to take the 
 re-evaluate my choices -- removing plugins I didn't use, updating ones which had
 better alternatives (in my opinion), adjusting key bindings and other bits to my taste,
 and optimizing the environment for the languages I currently use most (Javascript and Go).
-For better or worse, I also spend a lot of time staring at JSON and YAML and like
+For better or worse, I also spend a lot of time staring at JSON and YAML, and like
 appropriately tuned syntax highlighting.
 
 _This project is very opinionated._ When compared to more thorough projects like
-[amix/vim](https://github.com/amix/vimrc), I've stripped a lot of compatability code
+[amix/vim](https://github.com/amix/vimrc), I've stripped a lot of compatibility code
 (multi-OS support, GUI checks, etc). This certainly makes the configuration less
 portable, but I've purposefully optimized for MacOS + [iTerm2](https://www.iterm2.com) +
 [tmux](https://github.com/tmux/tmux/wiki). I've also stripped a few plugins I relied
 on heavily for years ([bufexplorer](https://github.com/jlanzarotta/bufexplorer),
 [NERD Tree](https://github.com/scrooloose/nerdtree), [ctrlp](https://github.com/ctrlpvim/ctrlp.vim)),
-opting for [fzf](https://github.com/junegunn/fzf) as a more efficient swiss army knife.
+opting for [fzf](https://github.com/junegunn/fzf) as a more efficient Swiss Army knife.
 
 Hopefully you find this useful...  If not directly, at least as a starting point for your
 own customization!
@@ -54,7 +54,7 @@ npm install -g prettier
 ```
 
 This is still a work in progress, so if you find something missing please let me know...
-A lot more can be required, depending how far down the completion rabit hole you want to go!
+A lot more can be required, depending how far down the completion rabbit hole you want to go!
 
 ## Plugins
 
@@ -70,7 +70,6 @@ since that's a thing now and fewer dependencies are awesome.
 ### Included Plugins
 
 Read over the documentation for each of the included plugins for usage information...
-Custom/common keymaps will be documented below.
 
 - [ack.vim](https://github.com/mileszs/ack.vim): Vim plugin for the Perl module / CLI script 'ack' (used for alias and command definitions, with `ackprg` mapped to `ag --vimgrep`)
 - [deoplete](https://github.com/Shougo/deoplete.nvim): Dark powered asynchronous completion framework for neovim/Vim8
@@ -115,7 +114,7 @@ For many years I was a [solarized](http://ethanschoonover.com/solarized) user.
 Everyone's taste is different, but I still think it's a thoughtful design. Unfortunately, I'm a
 night owl and often find myself working late. With Night Shift now native in MacOS (thank you,
 [flux](https://justgetflux.com)), I've found blue-heavy themes suffer as the day progresses. This
-got me looking for alternatives that offer similarly thoughtful design (balanced and consistant
+got me looking for alternatives that offer similarly thoughtful design (balanced and consistent
 contrast, light and dark modes) in a different color palette.
 
 I spent some time looking at available themes (I really don't want to create my own), and
@@ -173,7 +172,8 @@ set-option -ga terminal-overrides ",screen-256color:Tc"
 set termguicolors
 ```
 
-Inside iTerm and tmux `echo $COLORTERM` returns `truecolor`.
+Inside iTerm and tmux `echo $COLORTERM` returns `truecolor`.  Another common test is that
+`printf "\x1b[38;2;255;100;0mTRUECOLOR\x1b[0m\n"` should display `TRUECOLOR` in red.
 
 ## Ligatures
 
@@ -191,15 +191,30 @@ Aside from installing the font, be sure to select it and enable ligatures via `i
 [Give the script a read](https://github.com/deadlysyn/neovimrc/blob/master/install.sh),
 then installation should be as simple as running `install.sh`.
 
+After that, you should have a properly configured nvim, but no plugins will be
+installed.  Start nvim, ignore the warnings, run `PlugInstall`, `UpdateRemotePlugins`,
+exit, restart and you should be ready to rock!
+
+Refer to the [vim-plug](https://github.com/junegunn/vim-plug) docs for more information.
+
 ## Keymapping
 
-You can just grep the configs for key mappings, but here are some useful things to get you started...
+I'm still refining the aliases, and you can always grep the configs for key mappings,
+but here are some useful things to get you started...
+
+By default, I assign `<leader>` to `<space>`.
 
 ### Find Stuff
-TODO
+
+- `,f`: fuzzy search files
+- `,b`: fuzzy search buffers
+- `<ctrl>-p`: MRU file list
 
 ### Easier Editing
-TODO
+
+- `<ctrl>-j/k`: move line or visual block up/down
+- `<leader>-ss`: toggle spell checking
+- `<leader>-pp`: toggle paste mode
 
 ### Language Support
 TODO
