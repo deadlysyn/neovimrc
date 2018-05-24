@@ -229,11 +229,21 @@ replacement...it largely comes down to personal preference.  A future experiment
 rip/replace of iTerm (though I still love it!), or at least keeping a close eye on performance
 due to [this interesting writeup](https://danluu.com/term-latency).
 
+## TODOs
+
+- Document keybindings
+- More consistency across plugins (bindings, window types)
+- Optimize deoplete
+- Even better linting
+- Show lint errors in lightline
+- s/ag/rg
+
 ## Resources & Inspiration
 
 - [Ian Langworth's amazing Vim writeup](https://statico.github.io/vim3.html)
 - [Afnan Enayet's Neovim Setup](https://afnan.io/2018-04-12/my-neovim-development-setup)
 - [Oldie but goodie](https://dockyard.com/blog/2013/09/26/vim-moving-lines-aint-hard)
 - [Vim without NERD tree or CtrlP](https://gist.github.com/csswizardry/9a33342dace4786a9fee35c73fa5deeb)
+- [Learn Vimscript the Hard Way](http://learnvimscriptthehardway.stevelosh.com)
 - [VimR: A Neovim GUI](https://github.com/qvacua/vimr)
 - [Awesome tmux Config](https://github.com/tony/tmux-config)
