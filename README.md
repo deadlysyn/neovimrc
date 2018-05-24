@@ -135,8 +135,10 @@ colorscheme based on [base16](https://github.com/chriskempson/base16) (an amazin
 guidelines and theme builder framework). Aside from theming your terminal
 ([which is left as an exercise for the reader](https://github.com/martinlindhe/base16-iterm2)),
 we just need to ensure Neovim itself and [lightline](https://github.com/itchyny/lightline.vim)
-are consistently styled. The first is addressed by simply installing [base16-vim](https://github.com/chriskempson/base16-vim)
-which installs all the base16 themes (the one we care about is `~/.config/nvim/colors/base16-tomorrow-night.vim`),
+are consistently styled.
+
+The first is addressed by simply installing [base16-vim](https://github.com/chriskempson/base16-vim)
+which pulls in all the base16 themes (the one we care about is `~/.config/nvim/colors/base16-tomorrow-night.vim`),
 and the latter by `~/.config/nvim/plugged/lightline.vim/autoload/lightline/colorscheme/Tomorrow_Night.vim`
 (which ships with [lightline](https://github.com/itchyny/lightline.vim) so is only present after `PlugInstall`).
 Feel free to adjust or override these as needed!
@@ -178,7 +180,7 @@ Inside iTerm and tmux `echo $COLORTERM` returns `truecolor`.
 After years with [Source Code Pro](https://github.com/adobe-fonts/source-code-pro), I've moved to
 [Fira Code](https://github.com/tonsky/FiraCode) mainly for
 [ligature support](https://medium.com/larsenwork-andreas-larsen/ligatures-coding-fonts-5375ab47ef8e).
-This is all the rage these days, but I feel it's a subjective setting. Some feel it makes their code
+This is all the rage, but I feel it's a subjective setting. Some feel it makes their code
 easier to read, I resisted for quite awhile because I felt it actually made some things harder to read.
 Finally decided to give it a spin in this config, and chose Fira Code because
 [it is one of the top-reviewed fonts with ligature support](https://www.slant.co/topics/5611/~monospace-programming-fonts-with-ligatures).
@@ -186,10 +188,20 @@ Aside from installing the font, be sure to select it and enable ligatures via `i
 
 ## Installation
 
-TODO: write/document install script
+[Give the script a read](https://github.com/deadlysyn/neovimrc/blob/master/install.sh),
+then installation should be as simple as running `install.sh`.
 
 ## Keymapping
 
+You can just grep the configs for key mappings, but here are some useful things to get you started...
+
+### Find Stuff
+TODO
+
+### Easier Editing
+TODO
+
+### Language Support
 TODO
 
 ## Terminal Thoughts
