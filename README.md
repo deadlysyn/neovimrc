@@ -100,12 +100,11 @@ Custom/common keymaps will be documented below.
 
 ## Layout, Color & Themes
 
-Unless `$KDG_HOME_CONFIG` points elsewhere, Neovim configuration resides in `~/.config/neovim`
-(like vim's `~/.vim`). The main file is `init.vim` (Neovim's equivalent of `.vimrc`), which
-simply sources a number of `*.vim` files. This makes things somewhat modular -- you can easily
-edit `init.vim` and exclude parts of the configuration you don't use. If you like everything
-and just want to override a couple settings or extend the defaults, you can just drop
-custom bits in `99-custom_conf.vim`.
+Neovim configuration resides in `~/.config/neovim` (like vim's `~/.vim`). The main file is `init.vim`
+(Neovim's equivalent of `.vimrc`), which simply sources a number of `*.vim` files. This makes things
+somewhat modular -- you can easily edit `init.vim` and exclude parts of the configuration you don't
+use. If you like everything and just want to override a couple settings or extend the defaults, you
+can drop custom bits in `99-custom.vim`.
 
 Themes live in `~/.config/nvim/colors`. I know themes are often seen as unnecessary bling,
 but as something I spend many hours a day staring at, I find a well designed colorscheme
@@ -136,15 +135,16 @@ colorscheme based on [base16](https://github.com/chriskempson/base16) (an amazin
 guidelines and theme builder framework). Aside from theming your terminal
 ([which is left as an exercise for the reader](https://github.com/martinlindhe/base16-iterm2)),
 we just need to ensure Neovim itself and [lightline](https://github.com/itchyny/lightline.vim)
-are consistently styled. The first is addressed by `~/.config/nvim/colors/base16-tomorrow-night.vim`,
-(pulled in by `install.sh`) and the latter by
-`~/.config/nvim/plugged/lightline.vim/autoload/lightline/colorscheme/Tomorrow_Night.vim`
-(only present after `PlugInstall`). Feel free to adjust or override these as needed.
+are consistently styled. The first is addressed by simply installing [base16-vim](https://github.com/chriskempson/base16-vim)
+which installs all the base16 themes (the one we care about is `~/.config/nvim/colors/base16-tomorrow-night.vim`),
+and the latter by `~/.config/nvim/plugged/lightline.vim/autoload/lightline/colorscheme/Tomorrow_Night.vim`
+(which ships with [lightline](https://github.com/itchyny/lightline.vim) so is only present after `PlugInstall`).
+Feel free to adjust or override these as needed!
 
 ### Truecolor
 
-I've realized I enjoy "truecolor" support, and luckily
-[most modern terminals do it](https://github.com/junegunn/vim-plug). The differences
+I've realized I enjoy "truecolor" support. Luckily,
+[most terminals can do it](https://github.com/junegunn/vim-plug). The differences
 range from subtle to glaring, but make for a better experience overall. While this repo
 configures Neovim itself in a way that should be appropriate, you may need additional
 steps in your environment which will differ based on the terminal you use, whether you
@@ -204,6 +204,7 @@ due to [this interesting writeup](https://danluu.com/term-latency).
 
 - [Ian Langworth's amazing Vim writeup](https://statico.github.io/vim3.html)
 - [Afnan Enayet's Neovim Setup](https://afnan.io/2018-04-12/my-neovim-development-setup)
+- [Oldie but goodie](https://dockyard.com/blog/2013/09/26/vim-moving-lines-aint-hard)
 - [Vim without NERD tree or CtrlP](https://gist.github.com/csswizardry/9a33342dace4786a9fee35c73fa5deeb)
-- [VimR: Neovim GUI](https://github.com/qvacua/vimr)
+- [VimR: A Neovim GUI](https://github.com/qvacua/vimr)
 - [Awesome tmux Config](https://github.com/tony/tmux-config)
