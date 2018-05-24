@@ -1,6 +1,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Ack / silversearcher / cope
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated .git .DS_Store node_modules'
 
 " Use ag over grep
@@ -11,14 +12,8 @@ let g:ackprg = 'ag --vimgrep --smart-case'
 " remap 'K' to grep directory for word under cursor
 nnoremap K :Ack! "\b<cword>\b" <CR>
 
-" When you press gv you Ack after the selected text
-vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
-
 " Open Ack and put the cursor in the right position
 map <leader>g :Ack
-
-" When you press <leader>r you can search and replace the selected text
-vnoremap <silent> <leader>r :call VisualSelection('replace', '')<CR>
 
 " Do :help cope if you are unsure what cope is. It's super useful!
 "
@@ -39,6 +34,7 @@ map <leader>p :cp<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => deoplete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_smart_case = 1
 
@@ -57,7 +53,7 @@ call deoplete#custom#source('_',
 
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
-" TODO: set sources
+" WIP: set sources
 let g:deoplete#sources = {}
 let g:deoplete#sources.python = ['LanguageClient']
 let g:deoplete#sources.python3 = ['LanguageClient']
@@ -69,6 +65,7 @@ let g:deoplete#sources.zsh = ['zsh']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => fzf / fzf.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 autocmd! FileType fzf
 autocmd  FileType fzf set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode noruler

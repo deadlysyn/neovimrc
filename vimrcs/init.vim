@@ -36,5 +36,5 @@ call plug#end()
 " Keep config modular
 source ~/.config/nvim/include/00-simple.vim
 source ~/.config/nvim/include/05-full.vim
-source ~/.config/nvim/include/10-plugin_conf.vim
-source ~/.config/nvim/include/99-custom_conf.vim
+source ~/.config/nvim/include/10-plugin.vim
+source ~/.config/nvim/include/99-custom.vim
