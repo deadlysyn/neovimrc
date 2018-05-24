@@ -1,4 +1,6 @@
-![Neovim Logo](https://github.com/deadlysyn/neovimrc/blob/master/img/neovim-logo.png "Neovim")
+[![Neovim Logo](https://github.com/deadlysyn/neovimrc/blob/master/img/neovim-logo.png "Neovim")](https://neovim.io)
+
+**NOTE: Plugin selection is almost locked down, but tuning in progress! This is mostly true for deoplete, which I am working hard to optimize for my specific language choices. Feel free to test drive, but I'm hoping to get startup time improved after some pending changes.**
 
 # Opinionated Neovim Configuration
 
