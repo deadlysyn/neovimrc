@@ -83,7 +83,7 @@ set nu
 set t_kb=
 
 " Show colored column to help prevent long lines
-set colorcolumn=70
+set colorcolumn=80
 
 " Enable modelines
 set modeline
@@ -261,7 +261,7 @@ autocmd BufRead,BufNewFile *.txt setlocal spell
 
 " git commits
 autocmd FileType gitcommit setlocal spell
-autocmd Filetype gitcommit setlocal spell textwidth=70
+autocmd Filetype gitcommit setlocal spell textwidth=72
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
