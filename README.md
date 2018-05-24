@@ -6,7 +6,7 @@
 
 I've been using vi(m) for over 20 years. In that time, I've accumulated a lot of
 customizations. Aside from my personal settings, pre-baked configs -- including
-"[The Ultimate Vim Configuration](https://github.com/amix/vimrc)" and
+[The Ultimate Vim Configuration](https://github.com/amix/vimrc) and
 [vim-go](https://github.com/fatih/vim-go) -- provide a lightweight IDE
 when combined with [tmux](https://github.com/tmux/tmux). These served me well for many years.
 
@@ -56,17 +56,16 @@ npm install -g prettier
 ```
 
 This is still a work in progress, so if you find something missing please let me know...
-A lot more can be required, depending how far down the completion rabbit hole you want to go!
+More may be required, depending how far down the completion rabbit hole you want to go!
 
 ## Plugins
 
 I use [vim-plug](https://github.com/junegunn/vim-plug) for plugin management. It's fairly
 minimalist while maintaining a user-friendly interface -- for the most part, you just
 need to remember `PlugInstall` and `PlugClean`. Installation is a breeze, and the install
-script will take care of it for you.
-
-A future effort may refactor using [dein](https://github.com/Shougo/dein.vim) since it's
-reportedly faster, or perhaps [native package management](https://shapeshed.com/vim-packages)
+script will take care of it for you. A future effort may refactor using
+[dein](https://github.com/Shougo/dein.vim) since it's reportedly faster, or perhaps
+[native package management](https://shapeshed.com/vim-packages)
 since that's a thing now and fewer dependencies are awesome.
 
 ### Included Plugins
@@ -101,13 +100,15 @@ Read over the documentation for each of the included plugins for usage informati
 
 ## Layout, Color & Themes
 
-Neovim configuration resides in `~/.config/neovim` (like vim's `~/.vim`). The main file is `init.vim`
+Neovim configuration resides in `~/.config/nvim` (like vim's `~/.vim`). The main file is `init.vim`
 (Neovim's equivalent of `.vimrc`), which simply sources a number of `*.vim` files. This makes things
 somewhat modular -- you can easily edit `init.vim` and exclude parts of the configuration you don't
 use. If you like everything and just want to override a couple settings or extend the defaults, you
 can drop custom bits in `99-custom.vim`.
 
-Themes live in `~/.config/nvim/colors`. I know themes are often seen as unnecessary bling,
+Included themes land in `~/.config/nvim/plugged/base16-vim/colors` courtesy of
+[base16-vim](https://github.com/chriskempson/base16-vim), and you can drop custom themes
+in `~/.config/nvim/colors`. I know themes are often seen as unnecessary bling,
 but as something I spend many hours a day staring at, I find a well designed colorscheme
 essential to happiness. When done right, it relieves eyestrain through optimal contrast
 and boosts efficiency by better conveying important information.
@@ -134,15 +135,14 @@ I've currently settled on _Tomorrow_ for a few reasons:
 Out of the box, I use the [Tomorrow Night](https://github.com/chriskempson/base16-tomorrow-scheme)
 colorscheme based on [base16](https://github.com/chriskempson/base16) (an amazing set of styling
 guidelines and theme builder framework). Aside from theming your terminal
-([which is left as an exercise for the reader](https://github.com/martinlindhe/base16-iterm2)),
-we just need to ensure Neovim itself and [lightline](https://github.com/itchyny/lightline.vim)
+([which is left as an exercise for the reader](https://github.com/martinlindhe/base16-iterm2))
+and [tmux](https://github.com/deadlysyn/neovimrc/blob/master/tmux.conf),
+we just need to ensure Neovim and [lightline](https://github.com/itchyny/lightline.vim)
 are consistently styled.
 
 The first is addressed by simply installing [base16-vim](https://github.com/chriskempson/base16-vim)
-which pulls in all the base16 themes (the one we care about is `~/.config/nvim/colors/base16-tomorrow-night.vim`),
-and the latter by `~/.config/nvim/plugged/lightline.vim/autoload/lightline/colorscheme/Tomorrow_Night.vim`
-(which ships with [lightline](https://github.com/itchyny/lightline.vim) so is only present after `PlugInstall`).
-Feel free to adjust or override these as needed!
+(pulls in all the base16 themes if you want to explore), and the latter ships with
+_Tomorrow Night_. Both are only present after `PlugInstall`.
 
 ### Truecolor
 
