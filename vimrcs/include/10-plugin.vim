@@ -107,9 +107,6 @@ let g:gitgutter_sign_removed_first_line = '∅'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => lightline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:lightline = {
-"       \ 'colorscheme': 'Tomorrow_Night',
-"       \ }
 
 let g:lightline = {
       \ 'colorscheme': 'Tomorrow_Night',
@@ -141,13 +138,22 @@ let g:lightline = {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => neomake
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-call neomake#configure#automake('nrwi', 500)
+
 let g:neomake_serialize = 1
 let g:neomake_serialize_abort_on_error = 1
+let g:neomake_open_list = 2
+
+" Be less aggressive when on battery
+if system('pmset -g | grep AC')
+    call neomake#configure#automake('nrwi', 500)
+else
+    call neomake#configure#automake('w')
+endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim-go
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Use goimports instead of gofmt
 let g:go_fmt_command = "goimports"
 
