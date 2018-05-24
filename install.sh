@@ -1,38 +1,52 @@
 #!/usr/bin/env bash
 
+# If you change this, adjust paths in *.vim to match...
+DIR="~/.config/nvim"
+
 set -e
 umask 022
 
-# If you change this, adjust paths in *.vim to match...
-DIR="~/.config/nvim"
-mkdir -p "${DIR}/{autoload,colors,include,plugged}"
-
 function grab() {
-    path="$1"
-    url="$2"
+    url="$1"
+    path="$2"
     curl -fLo "$path" --create-dirs "$url" && echo "$url --> $path"
 }
 
 # Install vim-plug
 if [ ! -r ~/.local/share/nvim/site/autoload/plug.vim ]
 then
-    grab ~/.local/share/nvim/site/autoload/plug.vim \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    grab https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim \
+        ~/.local/share/nvim/site/autoload/plug.vim
 fi
 
-# Backup config if it exists
-if [ ! -r "${DIR}/init.vim.save" -a -r "${DIR}/init.vim" ]
+# Backup configs on first run
+if [ ! -d "${DIR}.save" -a -d "${DIR}" ]
 then
-    cp "${DIR}/init.vim" "${DIR}/init.vim.save"
+    mv "${DIR}" "${DIR}.save"
 fi
 
-grab "${DIR}/init.vim" \
-    https://raw.githubusercontent.com/deadlysyn/neovimrc/master/vimrcs/init.vim
-grab "${DIR}/include/00-simple.vim" \
-    https://raw.githubusercontent.com/deadlysyn/neovimrc/master/vimrcs/include/00-simple.vim
-grab "${DIR}/include/05-full.vim" \
-    https://raw.githubusercontent.com/deadlysyn/neovimrc/master/vimrcs/include/05-full.vim
-grab "${DIR}/include/10-plugin.vim" \
-    https://raw.githubusercontent.com/deadlysyn/neovimrc/master/vimrcs/include/10-plugin.vim
-grab "${DIR}/include/99-custom.vim" \
-    https://raw.githubusercontent.com/deadlysyn/neovimrc/master/vimrcs/include/99-custom.vim
+mkdir -p "${DIR}/{autoload,colors,include,plugged}"
+
+grab https://raw.githubusercontent.com/deadlysyn/neovimrc/master/vimrcs/init.vim \
+    "${DIR}/init.vim"
+
+grab https://raw.githubusercontent.com/deadlysyn/neovimrc/master/vimrcs/include/00-simple.vim \
+    "${DIR}/include/00-simple.vim"
+
+grab https://raw.githubusercontent.com/deadlysyn/neovimrc/master/vimrcs/include/05-full.vim \
+    "${DIR}/include/05-full.vim"
+
+grab https://raw.githubusercontent.com/deadlysyn/neovimrc/master/vimrcs/include/10-plugin.vim \
+    "${DIR}/include/10-plugin.vim"
+
+grab https://raw.githubusercontent.com/deadlysyn/neovimrc/master/vimrcs/include/99-custom.vim \
+    "${DIR}/include/99-custom.vim"
+
+cat <<EOF
+
+All Done!
+
+Start Neovim and type ':PlugInstall'. You may also need to download
+spelling files. If so, just answer 'Y' and hit 'ENTER' until it
+completes and you should be good to go.
+EOF
