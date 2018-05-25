@@ -76,6 +76,7 @@ Read over the documentation for each of the included plugins for usage informati
 - [deoplete](https://github.com/Shougo/deoplete.nvim): Dark powered asynchronous completion framework for neovim/Vim8
 - [lightline](https://github.com/itchyny/lightline.vim): A light and configurable statusline/tabline plugin for Vim.
 - [neomake](https://github.com/neomake/neomake): Asynchronous linting and make framework for Neovim/Vim
+- [far.vim](https://github.com/brooth/far.vim): Find And Replace Vim plugin
 - [fzf](https://github.com/junegunn/fzf): A command-line fuzzy finder
 - [fzf.vim](https://github.com/junegunn/fzf.vim): Useful bundle of fzf-based commands and mappings
 - [fzf-filemru](https://github.com/tweekmonster/fzf-filemru): File MRU with fzf.vim
