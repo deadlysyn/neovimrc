@@ -15,9 +15,17 @@ nmap <leader>w :w!<cr>
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
 
-" Ignore compiled files
-set wildignore=*.o,*~,*.pyc
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+" make navigating files and buffers easier
+set wildmenu
+set wildmode=list:full
+set wildignorecase
+
+" Ignore cruft
+set wildignore=*~,*.swp,*.bak,*/.DS_Store
+set wildignore+=*.pyc,*.class,*.sln,*.Master,*.csproj,*.csproj.user,*.cache,*.dll,*.pdb,*.min.*,*.o
+set wildignore+=*/.git/**/*,*/.hg/**/*,*/.svn/**/*
+set wildignore+=tags
+set wildignore+=*.tar.*
 
 " write file contents when calling :make
 set autowrite
