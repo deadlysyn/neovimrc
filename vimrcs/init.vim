@@ -1,7 +1,5 @@
-" I inheirit these from my terminal. If you adjust, do it at the top
-" of your config or you may run into edge cases.
-"set encoding=utf8
-"set termencoding=utf-8
+" Do this early.
+set encoding=utf8
 
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.config/nvim/plugged')
