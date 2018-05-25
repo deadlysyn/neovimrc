@@ -27,6 +27,10 @@ set autowrite
 " low can cause highlighting glitches. YMMV.
 set updatetime=500
 
+" Adjust key sequence timeout
+set ttimeout
+set ttimeoutlen=100
+
 " Use system clipboard
 set clipboard=unnamed
 
@@ -93,13 +97,14 @@ set modelines=5
 set cursorline
 set cursorcolumn
 
+" Delete comment character when joining commented lines
+set formatoptions+=j
+
 " Highlight unwanted spaces
 set list
-
-" Highlight end of line whitespace
-"highlight WhitespaceEOL ctermbg=red guibg=red
-highlight WhitespaceEOL ctermbg=red
-match WhitespaceEOL /\s\+$/
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+highlight link sensibleWhitespaceError Error
+autocmd Syntax * syntax match sensibleWhitespaceError excludenl /\s\+\%#\@<!$\| \+\ze\t/ display containedin=ALL
 
 " performance tuning
 set noshowmode noshowcmd noruler
