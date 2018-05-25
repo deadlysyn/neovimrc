@@ -201,13 +201,6 @@ map <leader>ba :bufdo bd<cr>
 map <leader>l :bnext<cr>
 map <leader>h :bprevious<cr>
 
-" Useful mappings for managing tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-map <leader>t<leader> :tabnext
-
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
 nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
@@ -267,28 +260,3 @@ autocmd BufRead,BufNewFile *.txt setlocal spell
 " git commits
 autocmd FileType gitcommit setlocal spell
 autocmd Filetype gitcommit setlocal spell textwidth=72
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Helper functions
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" function! CmdLine(str)
-"     call feedkeys(":" . a:str)
-" endfunction
-
-" function! VisualSelection(direction, extra_filter) range
-"     let l:saved_reg = @"
-"     execute "normal! vgvy"
-
-"     let l:pattern = escape(@", "\\/.*'$^~[]")
-"     let l:pattern = substitute(l:pattern, "\n$", "", "")
-
-"     if a:direction == 'gv'
-"         call CmdLine("Ack '" . l:pattern . "' " )
-"     elseif a:direction == 'replace'
-"         call CmdLine("%s" . '/'. l:pattern . '/')
-"     endif
-
-"     let @/ = l:pattern
-"     let @" = l:saved_reg
-" endfunction
