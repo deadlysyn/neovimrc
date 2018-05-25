@@ -207,6 +207,18 @@ but here are some useful things to get you started...
 
 By default, I assign `<leader>` to `<space>`.
 
+### Buffers Tabs and Windows
+
+- `<leader>-q/x`: open text/markdown scratch buffer
+- `<leader>-bd`: close current buffer
+- `<leader>-ba`: close all buffers
+- `<leader>-l`: next buffer
+- `<leader>-h`: previous buffer
+- `<leader>-cd`: change working directory to current buffer's
+- `<leader>-te`: open tab with current buffer's path
+- `tl`: toggle between current and last accessed tab
+- `<ctrl>-j/k/h/l`: move around windows
+
 ### Find Stuff
 
 - `,f`: fuzzy search files
@@ -218,9 +230,18 @@ By default, I assign `<leader>` to `<space>`.
 - `<ctrl>-j/k`: move line or visual block up/down
 - `<leader>-ss`: toggle spell checking
 - `<leader>-pp`: toggle paste mode
+- `<leader>-pp`: toggle paste mode
+- `<leader>-pp`: toggle paste mode
 
 ### Language Support
 TODO
+
+### Misc
+
+- `<leader>-m`: trim `^M`'s
+- `<leader>-<cr>`: turn off search highlight
+- `<leader>-e`: edit custom neovim config, auto-source on write
+- `xdate`: type in insert mode to replace with ISO 8601 timestamp
 
 ## Terminal Thoughts
 
