@@ -63,19 +63,15 @@ let g:deoplete#sources.vim = ['vim']
 let g:deoplete#sources.zsh = ['zsh']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => fzf / fzf.vim
+" => Denite
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-autocmd! FileType fzf
-autocmd  FileType fzf set laststatus=0 noshowmode noruler
-  \| autocmd BufLeave <buffer> set laststatus=2 noshowmode noruler
-nnoremap <leader>f :Files<CR>
-nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>ff :Denite file/rec<CR>
+nnoremap <leader>fb :Denite buffer<CR>
+nnoremap <leader>fc :DeniteCursorWord file/rec buffer<CR>
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => fzf-filemru
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <c-p> :FilesMru --tiebreak=end<cr>
+" Change default prompt
+call denite#custom#option('default', 'prompt', '➤')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Git gutter (Git diff)
@@ -93,7 +89,7 @@ let g:gitgutter_max_signs = 500
 nnoremap <silent> <leader>d :GitGutterToggle<cr>
 
 " Use ag vs grep
-let g:gitgutter_grep = 'ag'
+let g:gitgutter_grep = 'ag --vimgrep'
 
 " Highlight entire line on change
 let g:gitgutter_highlight_lines = 1
@@ -144,7 +140,7 @@ let g:neomake_serialize_abort_on_error = 1
 let g:neomake_open_list = 2
 
 " Be less aggressive when on battery
-if system('pmset -g | grep AC')
+if system('pmset -g | grep AC >/dev/null')
     call neomake#configure#automake('nrwi', 500)
 else
     call neomake#configure#automake('w')

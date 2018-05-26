@@ -17,7 +17,6 @@ set ffs=unix,dos,mac
 
 " make navigating files and buffers easier
 set wildmenu
-set wildmode=list:full
 set wildignorecase
 
 " Ignore cruft
@@ -94,9 +93,6 @@ set nu
 " Don't send special characters with backspace
 set t_kb=
 
-" Show colored column to help prevent long lines
-set colorcolumn=80
-
 " Enable modelines
 set modeline
 set modelines=5
@@ -107,12 +103,6 @@ set cursorcolumn
 
 " Delete comment character when joining commented lines
 set formatoptions+=j
-
-" Highlight unwanted spaces
-set list
-set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-highlight link sensibleWhitespaceError Error
-autocmd Syntax * syntax match sensibleWhitespaceError excludenl /\s\+\%#\@<!$\| \+\ze\t/ display containedin=ALL
 
 " performance tuning
 set noshowmode noshowcmd noruler
@@ -126,6 +116,15 @@ syntax enable
 
 " Truecolor support
 set termguicolors
+
+" Show colored column to help prevent long lines
+set colorcolumn=80
+
+" Highlight unwanted spaces
+set list
+set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+"highlight link sensibleWhitespaceError Error
+"autocmd Syntax * syntax match sensibleWhitespaceError excludenl /\s\+\%#\@<!$\| \+\ze\t/ display containedin=ALL
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo

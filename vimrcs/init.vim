@@ -8,9 +8,8 @@ Plug 'https://github.com/chriskempson/base16-vim.git'
 Plug 'https://github.com/neomake/neomake.git'
 Plug 'https://github.com/Shougo/deoplete.nvim.git', { 'do': ':UpdateRemotePlugins' }
 Plug 'https://github.com/airblade/vim-gitgutter.git'
-Plug 'https://github.com/junegunn/fzf.git'
-Plug 'https://github.com/junegunn/fzf.vim.git'
-Plug 'https://github.com/tweekmonster/fzf-filemru.git'
+Plug 'https://github.com/Shougo/denite.nvim.git'
+Plug 'https://github.com/brooth/far.vim.git'
 Plug 'https://github.com/amix/open_file_under_cursor.vim.git'
 Plug 'https://github.com/mileszs/ack.vim.git'
 Plug 'https://github.com/tpope/vim-unimpaired.git'
@@ -27,7 +26,7 @@ Plug 'https://github.com/fatih/vim-go.git', { 'do': ':GoUpdateBinaries', 'tag': 
 Plug 'https://github.com/pangloss/vim-javascript.git'
 Plug 'https://github.com/mxw/vim-jsx.git'
 Plug 'https://github.com/elzr/vim-json.git'
-Plug 'https://github.com/gabrielelana/vim-markdown.git'
+"Plug 'https://github.com/gabrielelana/vim-markdown.git'
 Plug 'https://github.com/stephpy/vim-yaml.git'
 call plug#end()
 

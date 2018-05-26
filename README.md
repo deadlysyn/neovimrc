@@ -24,7 +24,7 @@ portable, but I've purposefully optimized for MacOS + [iTerm2](https://www.iterm
 [tmux](https://github.com/tmux/tmux/wiki). I've also stripped a few plugins I relied
 on heavily for years ([bufexplorer](https://github.com/jlanzarotta/bufexplorer),
 [NERD Tree](https://github.com/scrooloose/nerdtree), [ctrlp](https://github.com/ctrlpvim/ctrlp.vim)),
-opting for [fzf](https://github.com/junegunn/fzf) as a more efficient Swiss Army knife.
+opting for [denite](https://github.com/Shougo/denite.nvim) as a more efficient Swiss Army knife.
 
 Hopefully you find this useful...  If not directly, at least as a starting point for your
 own customization!
@@ -42,8 +42,6 @@ brew cask install font-fira-code # ligature support
 
 # Hard dependencies
 brew install neovim
-brew install fzf # fuzzy search
-brew install gawk # required by fzf-filemru
 brew install the_silver_searcher # grep replacement
 brew install python # python3 required by deoplete
 
@@ -77,9 +75,7 @@ Read over the documentation for each of the included plugins for usage informati
 - [lightline](https://github.com/itchyny/lightline.vim): A light and configurable statusline/tabline plugin for Vim.
 - [neomake](https://github.com/neomake/neomake): Asynchronous linting and make framework for Neovim/Vim
 - [far.vim](https://github.com/brooth/far.vim): Find And Replace Vim plugin
-- [fzf](https://github.com/junegunn/fzf): A command-line fuzzy finder
-- [fzf.vim](https://github.com/junegunn/fzf.vim): Useful bundle of fzf-based commands and mappings
-- [fzf-filemru](https://github.com/tweekmonster/fzf-filemru): File MRU with fzf.vim
+- [denite](https://github.com/Shougo/denite.nvim): A command-line fuzzy finder
 - [open_file_under_cursor.vim](https://github.com/amix/open_file_under_cursor.vim): Open file under cursor when pressing gf (if the text under the cursor is a path)
 - [ultisnips](https://github.com/SirVer/ultisnips): The ultimate snippet solution for Vim
 - [vim-snippets](https://github.com/honza/vim-snippets): vim-snipmate default snippets (Previously snipmate-snippets)
@@ -221,9 +217,9 @@ By default, I assign `<leader>` to `<space>`.
 
 ### Find Stuff
 
-- `,f`: fuzzy search files
-- `,b`: fuzzy search buffers
-- `<ctrl>-p`: MRU file list
+- `<leader>ff`: fuzzy search files
+- `<leader>fb`: fuzzy search buffers
+- `<leader>fc`: fuzzy search files and buffers for word under cursor
 
 ### Easier Editing
 
@@ -253,11 +249,15 @@ due to [this interesting writeup](https://danluu.com/term-latency).
 
 ## TODOs
 
+```
+```
+
 - Document keybindings
 - More consistency across plugins (bindings, window types)
 - Optimize deoplete
 - Even better linting
 - Show lint errors in lightline
+- Tags!
 - s/ag/rg
 
 ## Resources & Inspiration
