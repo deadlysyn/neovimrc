@@ -220,6 +220,7 @@ By default, I assign `<leader>` to `<space>`.
 - `<leader>ff`: fuzzy search files
 - `<leader>fb`: fuzzy search buffers
 - `<leader>fc`: fuzzy search files and buffers for word under cursor
+- `<C-g/t>`: move down/up in denite buffers
 
 ### Easier Editing
 
@@ -239,25 +240,14 @@ TODO
 - `<leader>-e`: edit custom neovim config, auto-source on write
 - `xdate`: type in insert mode to replace with ISO 8601 timestamp
 
-## Terminal Thoughts
-
-Years ago I hopped on the iTerm bandwagon because it addressed serious gaps in the native MacOS
-terminal. As things have evolved, there are less reasons to use a terminal
-replacement...it largely comes down to personal preference.  A future experiment may include
-rip/replace of iTerm (though I still love it!), or at least keeping a close eye on performance
-due to [this interesting writeup](https://danluu.com/term-latency).
-
 ## TODOs
 
-```
-```
-
-- Document keybindings
+- Document keybindings (WIP)
 - More consistency across plugins (bindings, window types)
-- Optimize deoplete
-- Even better linting
+- Optimize deoplete + language servers
+- Better linting
 - Show lint errors in lightline
-- Tags!
+- Tags
 - s/ag/rg
 
 ## Resources & Inspiration
@@ -268,4 +258,5 @@ due to [this interesting writeup](https://danluu.com/term-latency).
 - [Vim without NERD tree or CtrlP](https://gist.github.com/csswizardry/9a33342dace4786a9fee35c73fa5deeb)
 - [Learn Vimscript the Hard Way](http://learnvimscriptthehardway.stevelosh.com)
 - [VimR: A Neovim GUI](https://github.com/qvacua/vimr)
+- [Time to go back to Terminal.app?](https://danluu.com/term-latency)
 - [Awesome tmux Config](https://github.com/tony/tmux-config)
