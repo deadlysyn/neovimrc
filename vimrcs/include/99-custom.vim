@@ -2,9 +2,7 @@
 " => Local customiations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Not used by terminal (neo)vim (set in iTerm)
-"set guifont=Fira\ Code:h12
-
+set guifont=Fira\ Code:h12
 set background=dark
 
 " https://github.com/chriskempson/base16-shell
