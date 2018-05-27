@@ -39,7 +39,7 @@ grab https://raw.githubusercontent.com/deadlysyn/neovimrc/master/vimrcs/include/
     "${DIR}/include/10-plugin.vim"
 
 # Contains overrides, so only install if it doesn't exist.
-if [ ! -e "${DIR}/include/99-custom.vim" ]
+if [ "$1" != "-f" -o ! -e "${DIR}/include/99-custom.vim" ]
 then
     grab https://raw.githubusercontent.com/deadlysyn/neovimrc/master/vimrcs/include/99-custom.vim \
         "${DIR}/include/99-custom.vim"
@@ -47,12 +47,11 @@ fi
 
 cat <<EOF
 
-Configuration complete!
+Configuration complete! Now start nvim and run:
 
-Now start Neovim and type:
-
-    :PlugInstall<enter> (takes awhile on first run)
+    :PlugInstall
     :UpdateRemotePlugins
+    :GoInstallBinaries
     :q!
     :q!
 
