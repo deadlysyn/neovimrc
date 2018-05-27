@@ -76,6 +76,7 @@ call denite#custom#option('default', 'prompt', '➤')
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Git gutter (Git diff)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Where symbols are displayed
 set signcolumn=yes
 
@@ -86,13 +87,10 @@ let g:gitgutter_enabled=1
 let g:gitgutter_max_signs = 500
 
 " Easily turn gitgutter on/off
-nnoremap <silent> <leader>d :GitGutterToggle<cr>
+nnoremap <silent> <leader>gg :GitGutterToggle<cr>
 
 " Use ag vs grep
-let g:gitgutter_grep = 'ag --vimgrep'
-
-" Highlight entire line on change
-let g:gitgutter_highlight_lines = 1
+let g:gitgutter_grep = 'ag'
 
 let g:gitgutter_sign_added = '✚'
 let g:gitgutter_sign_modified = '∓'
