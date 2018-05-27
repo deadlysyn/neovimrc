@@ -71,11 +71,11 @@ since that's a thing now and fewer dependencies are awesome.
 Read over the documentation for each of the included plugins for usage information...
 
 - [ack.vim](https://github.com/mileszs/ack.vim): Vim plugin for the Perl module / CLI script 'ack' (used for alias and command definitions, with `ackprg` mapped to `ag --vimgrep`)
+- [denite](https://github.com/Shougo/denite.nvim): A command-line fuzzy finder
 - [deoplete](https://github.com/Shougo/deoplete.nvim): Dark powered asynchronous completion framework for neovim/Vim8
+- [far.vim](https://github.com/brooth/far.vim): Find And Replace Vim plugin
 - [lightline](https://github.com/itchyny/lightline.vim): A light and configurable statusline/tabline plugin for Vim.
 - [neomake](https://github.com/neomake/neomake): Asynchronous linting and make framework for Neovim/Vim
-- [far.vim](https://github.com/brooth/far.vim): Find And Replace Vim plugin
-- [denite](https://github.com/Shougo/denite.nvim): A command-line fuzzy finder
 - [open_file_under_cursor.vim](https://github.com/amix/open_file_under_cursor.vim): Open file under cursor when pressing gf (if the text under the cursor is a path)
 - [ultisnips](https://github.com/SirVer/ultisnips): The ultimate snippet solution for Vim
 - [vim-snippets](https://github.com/honza/vim-snippets): vim-snipmate default snippets (Previously snipmate-snippets)
@@ -94,6 +94,7 @@ Read over the documentation for each of the included plugins for usage informati
 - [vim-json](https://github.com/elzr/vim-json): A better JSON for Vim: distinct highlighting of keywords vs values, JSON-specific (non-JS) warnings, quote concealing
 - [vim-markdown](https://github.com/gabrielelana/vim-markdown): Markdown for Vim: a complete environment to create Markdown files with a syntax highlight that doesn't suck!
 - [vim-yaml](https://github.com/stephpy/vim-yaml): Override vim syntax for yaml files
+- [vim-windowswap](https://github.com/wesQ3/vim-windowswap): Swap your windows without ruining your layout
 
 ## Layout, Color & Themes
 
@@ -122,9 +123,8 @@ the primary candidates I considered moving to were [gruvbox](https://github.com/
 and [tomorrow](https://github.com/chriskempson/tomorrow-theme)... Both are beautiful, but
 I've currently settled on _Tomorrow_ for a few reasons:
 
-- Themes were available for all my tools (gruvbox is now too, just not in the official lightline repo)
 - More modes (light, dark, eighties, blue, etc.)
-- Stronger contrast in some areas (personal preference)
+- Stronger dark mode contrast
 - Mature project with [good community feedback](https://www.slant.co/topics/358/~best-color-themes-for-text-editors)
 
 ### Base16 FTW
@@ -143,20 +143,16 @@ _Tomorrow Night_. Both are only present after `PlugInstall`.
 
 ### Truecolor
 
-I've realized I enjoy "truecolor" support. Luckily,
-[most terminals can do it](https://github.com/junegunn/vim-plug). The differences
-range from subtle to glaring, but make for a better experience overall. While this repo
-configures Neovim itself in a way that should be appropriate, you may need additional
-steps in your environment which will differ based on the terminal you use, whether you
-layer on tmux, etc.
+[Most terminals support "truecolor" these days](https://gist.github.com/XVilka/8346728).
+This repo configures Neovim appropriately, but you may need additional steps in your
+environment based on the terminal you use, whether you layer on tmux, etc.
 
 Along with truecolor support, I mostly live in the commandline so use
 [base16-shell](https://github.com/chriskempson/base16-shell) to preserve the original ANSI colors.
 There's also a useful `colortest` utility you can use to verify proper behavior, and
 [a helpful troubleshooting guide](https://recordnotfound.com/base16-vim-chriskempson-31016).
 
-Historically, support was spotty and this seemed to be black magic...  With any recent
-combination of tools it should be straightforward. This is working for me:
+This is working for me on latest versions:
 
 ```
 # iTerm
@@ -171,7 +167,7 @@ set-option -ga terminal-overrides ",screen-256color:Tc"
 set termguicolors
 ```
 
-Inside iTerm and tmux `echo $COLORTERM` returns `truecolor`.  Another common test is that
+Inside iTerm and tmux `echo $COLORTERM` returns `truecolor`.
 `printf "\x1b[38;2;255;100;0mTRUECOLOR\x1b[0m\n"` should display `TRUECOLOR` in red.
 
 ## Ligatures
@@ -212,6 +208,7 @@ By default, I assign `<leader>` to `<space>`.
 - `<leader>-h`: previous buffer
 - `<leader>-cd`: change working directory to current buffer's
 - `<leader>-te`: open tab with current buffer's path
+- `<leader>-ww`: type this over two different windows to swap their positions
 - `tl`: toggle between current and last accessed tab
 - `<ctrl>-j/k/h/l`: move around windows
 
