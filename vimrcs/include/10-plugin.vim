@@ -2,10 +2,9 @@
 " => Ack / silversearcher / cope
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let Grep_Skip_Dirs = 'RCS CVS SCCS .svn generated .git .DS_Store node_modules'
+"let Grep_Skip_Dirs = '.git node_modules'
 
 " Use ag over grep
-"set grepprg=ag\ --nogroup\ --nocolor
 set grepprg=ag\ --vimgrep\ --smart-case
 let g:ackprg = 'ag --vimgrep --smart-case'
 
@@ -13,19 +12,15 @@ let g:ackprg = 'ag --vimgrep --smart-case'
 nnoremap K :Ack! "\b<cword>\b" <CR>
 
 " Open Ack and put the cursor in the right position
-map <leader>g :Ack
+map <leader>g :Ack<space>
 
 " Do :help cope if you are unsure what cope is. It's super useful!
-"
 " When you search with Ack, display your results in cope by doing:
 "   <leader>cc
-"
 " To go to the next search result do:
 "   <leader>n
-"
 " To go to the previous search results do:
 "   <leader>p
-"
 map <leader>cc :botright cope<cr>
 map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
 map <leader>n :cn<cr>
@@ -34,33 +29,59 @@ map <leader>p :cp<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => deoplete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Lazy-load to help startup time
+let g:deoplete#enable_at_startup = 0
+autocmd InsertEnter * call deoplete#enable()
 
-let g:deoplete#enable_at_startup = 1
+" Neocomplete-like auto select
+set completeopt+=noinsert
+
+" Make status messages more concise
+set shortmess+=c
+
+" Hit enter vs <C-y> to close popup window
+inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+function! s:my_cr_function() abort
+    return deoplete#close_popup() . "\<CR>"
+endfunction<Paste>
+
+" Smart case matching
 let g:deoplete#enable_smart_case = 1
 
-" disable autocomplete by default
-let b:deoplete_disable_auto_complete=1
-let g:deoplete_disable_auto_complete=1
-call deoplete#custom#buffer_option('auto_complete', v:false)
+" Helps performance
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 
-if !exists('g:deoplete#omni#input_patterns')
-    let g:deoplete#omni#input_patterns = {}
-endif
+" disable autocomplete by default
+"let b:deoplete_disable_auto_complete=1
+"let g:deoplete_disable_auto_complete=1
+
+"call deoplete#custom#buffer_option('auto_complete', v:false)
+call deoplete#custom#option('yarp', v:true)
+
+" if !exists('g:deoplete#omni#input_patterns')
+"     let g:deoplete#omni#input_patterns = {}
+" endif
 
 " Disable the candidates in Comment/String syntaxes.
 call deoplete#custom#source('_',
     \ 'disabled_syntaxes', ['Comment', 'String'])
 
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+" Disable buffer source
+call deoplete#custom#option('ignore_sources', {'_': ['buffer']})
 
-" WIP: set sources
-let g:deoplete#sources = {}
-let g:deoplete#sources.python = ['LanguageClient']
-let g:deoplete#sources.python3 = ['LanguageClient']
-let g:deoplete#sources.go = ['LanguageClient']
-let g:deoplete#sources.javascript = ['LanguageClient']
-let g:deoplete#sources.vim = ['vim']
-let g:deoplete#sources.zsh = ['zsh']
+" Sort candidates alphabetically
+call deoplete#custom#source('_', 'sorters', ['sorter_word'])
+
+" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+" " WIP: set sources
+" let g:deoplete#sources = {}
+" let g:deoplete#sources.python = ['LanguageClient']
+" let g:deoplete#sources.python3 = ['LanguageClient']
+" let g:deoplete#sources.go = ['LanguageClient']
+" let g:deoplete#sources.javascript = ['LanguageClient']
+" let g:deoplete#sources.vim = ['vim']
+" let g:deoplete#sources.zsh = ['zsh']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Denite
@@ -69,8 +90,6 @@ let g:deoplete#sources.zsh = ['zsh']
 nnoremap <leader>ff :Denite file/rec<CR>
 nnoremap <leader>fb :Denite buffer<CR>
 nnoremap <leader>fc :DeniteCursorWord file/rec buffer<CR>
-
-" Change default prompt
 call denite#custom#option('default', 'prompt', '➤')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -151,6 +170,9 @@ endif
 " Use goimports instead of gofmt
 let g:go_fmt_command = "goimports"
 
+" Enable auto import
+let g:go_auto_sameids = 1
+
 " Set up go syntax highlighting
 au BufRead,BufNewFile *.go set filetype=go
 let g:go_highlight_types = 1
@@ -161,6 +183,9 @@ let g:go_highlight_operators = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
+
+" show type info in status line
+let g:go_auto_type_info = 1
 
 " don't check for go-vim binaries on each run to speed things up
 let g:go_disable_autoinstall = 0
@@ -176,13 +201,11 @@ nnoremap <leader>a :cclose<CR>
 " make common go tasks easier in go-vim
 au FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
 au FileType go nmap <Leader>i <Plug>(go-info)
-let g:go_auto_type_info = 1
 au FileType go nmap <leader>r  <Plug>(go-run)
 au FileType go nmap <leader>t  <Plug>(go-test)
 let g:go_test_timeout = '30s'
 au FileType go nmap <Leader>gd <Plug>(go-doc)
 au FileType go nmap gd <Plug>(go-def-tab)
-let g:go_auto_sameids = 1
 
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
@@ -197,29 +220,35 @@ endfunction
 autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Syntastic (syntax checker)
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" let g:ale_linters = {
-" \   'javascript': ['jshint'],
-" \   'python': ['flake8'],
-" \   'go': ['go', 'golint', 'errcheck']
-" \}
-
-" leader-a used by go-vim
-" nmap <silent> <leader>a <Plug>(ale_next_wrap)
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-javascript
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let g:javascript_plugin_flow = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-json
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let g:vim_json_syntax_conceal = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-multiple-cursors
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let g:multi_cursor_next_key="\<C-s>"
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-markdown
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+let g:markdown_fenced_languages = ['html', 'css', 'bash=sh', 'javascript', 'go']
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => ultisnips
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<c-b>"
+let g:UltiSnipsEditSplit="vertical"
