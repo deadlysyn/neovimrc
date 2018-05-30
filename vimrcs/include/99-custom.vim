@@ -2,7 +2,13 @@
 " => Local customiations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-set guifont=Fira\ Code:h12
+" Improves startup time
+let g:python_host_prog = '/usr/local/bin/python2'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
+" Not used in terminal; set in iTerm
+"set guifont=Fira\ Code:h12
+
 set background=dark
 
 " https://github.com/chriskempson/base16-shell
