@@ -29,9 +29,12 @@ map <leader>p :cp<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => deoplete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " Lazy-load to help startup time
 let g:deoplete#enable_at_startup = 0
 autocmd InsertEnter * call deoplete#enable()
+
+call deoplete#custom#option('yarp', v:true)
 
 " Neocomplete-like auto select
 set completeopt+=noinsert
@@ -40,10 +43,10 @@ set completeopt+=noinsert
 set shortmess+=c
 
 " Hit enter vs <C-y> to close popup window
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function() abort
-    return deoplete#close_popup() . "\<CR>"
-endfunction<Paste>
+" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+" function! s:my_cr_function() abort
+"     return deoplete#close_popup() . "\<CR>"
+" endfunction<Paste>
 
 " Smart case matching
 let g:deoplete#enable_smart_case = 1
@@ -52,15 +55,13 @@ let g:deoplete#enable_smart_case = 1
 let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 
 " disable autocomplete by default
-"let b:deoplete_disable_auto_complete=1
-"let g:deoplete_disable_auto_complete=1
+let b:deoplete_disable_auto_complete=1
+let g:deoplete_disable_auto_complete=1
+call deoplete#custom#buffer_option('auto_complete', v:false)
 
-"call deoplete#custom#buffer_option('auto_complete', v:false)
-call deoplete#custom#option('yarp', v:true)
-
-" if !exists('g:deoplete#omni#input_patterns')
-"     let g:deoplete#omni#input_patterns = {}
-" endif
+if !exists('g:deoplete#omni#input_patterns')
+    let g:deoplete#omni#input_patterns = {}
+endif
 
 " Disable the candidates in Comment/String syntaxes.
 call deoplete#custom#source('_',
@@ -74,14 +75,26 @@ call deoplete#custom#source('_', 'sorters', ['sorter_word'])
 
 " autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
-" " WIP: set sources
-" let g:deoplete#sources = {}
-" let g:deoplete#sources.python = ['LanguageClient']
-" let g:deoplete#sources.python3 = ['LanguageClient']
-" let g:deoplete#sources.go = ['LanguageClient']
-" let g:deoplete#sources.javascript = ['LanguageClient']
-" let g:deoplete#sources.vim = ['vim']
-" let g:deoplete#sources.zsh = ['zsh']
+" set sources
+let g:deoplete#sources = {}
+let g:deoplete#sources.go = ['LanguageClient']
+let g:deoplete#sources.javascript = ['LanguageClient']
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => LanguageClient
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:LanguageClient_serverCommands = {
+    \ 'go': ['go-langserver', 'gocode'],
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ }
+
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+
+nnoremap <silent> <leader>lh :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> <leader>ld :call LanguageClient#textDocument_definition()<CR>
+nnoremap <silent> <leader>lr :call LanguageClient#textDocument_rename()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Denite
