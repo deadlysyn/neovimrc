@@ -86,7 +86,6 @@ Read over the documentation for each of the included plugins for usage informati
 - [vim-commentary](https://github.com/tpope/vim-commentary): comment stuff out
 - [vim-fugitive](https://github.com/tpope/vim-fugitive): a Git wrapper so awesome, it should be illegal
 - [vim-gitgutter](https://github.com/airblade/vim-gitgutter): A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks
-- [vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors): True Sublime Text style multiple selections for Vim
 - [vim-polyglot](https://github.com/sheerun/vim-polyglot): A solid language pack for Vim
 - [vim-go](https://github.com/fatih/vim-go): Go development plugin for Vim
 - [vim-javascript](https://github.com/pangloss/vim-javascript): Vastly improved Javascript indentation and syntax support in Vim
@@ -221,6 +220,7 @@ By default, I assign `<leader>` to `<space>`.
 
 ### Easier Editing
 
+- `@`: run macro on visual selection
 - `<ctrl>-j/k`: move line or visual block up/down
 - `<leader>-ss`: toggle spell checking
 - `<leader>-pp`: toggle paste mode
