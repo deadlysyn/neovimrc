@@ -35,15 +35,6 @@ Plug 'mxw/vim-jsx'
 Plug 'mhartington/nvim-typescript'
 call plug#end()
 
-" Future consideration:
-" gabrielelana/vim-markdown.git
-" wokalski/autocomplete-flow.git
-"   Requires: HerringtonDarkholme/yats.vim
-" zchee/deoplete-jedi.git
-"   Requires: davidhalter/jedi
-" carlitux/deoplete-ternjs
-"   Requires: http://ternjs.net
-
 " Keep config modular
 source ~/.config/nvim/include/00-simple.vim
 source ~/.config/nvim/include/05-full.vim
