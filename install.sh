@@ -38,8 +38,8 @@ grab https://raw.githubusercontent.com/deadlysyn/neovimrc/master/vimrcs/include/
 grab https://raw.githubusercontent.com/deadlysyn/neovimrc/master/vimrcs/include/10-plugin.vim \
     "${DIR}/include/10-plugin.vim"
 
-# Contains overrides, so only install if it doesn't exist.
-if [ "$1" != "-f" -o ! -e "${DIR}/include/99-custom.vim" ]
+# Contains overrides, so only install if it doesn't exist or when forced.
+if [ "X${1}" == "X-f" ! -e "${DIR}/include/99-custom.vim" ]
 then
     grab https://raw.githubusercontent.com/deadlysyn/neovimrc/master/vimrcs/include/99-custom.vim \
         "${DIR}/include/99-custom.vim"
