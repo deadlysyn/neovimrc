@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -eu
+set -e
 umask 022
 
 # If you change this, adjust paths in *.vim to match...
@@ -39,7 +39,7 @@ grab https://raw.githubusercontent.com/deadlysyn/neovimrc/master/vimrcs/include/
     "${DIR}/include/10-plugin.vim"
 
 # Contains overrides, so only install if it doesn't exist or when forced.
-if [ "X${1}" == "X-f" ! -e "${DIR}/include/99-custom.vim" ]
+if [ "X${1}" == "X-f" -o ! -e "${DIR}/include/99-custom.vim" ]
 then
     grab https://raw.githubusercontent.com/deadlysyn/neovimrc/master/vimrcs/include/99-custom.vim \
         "${DIR}/include/99-custom.vim"
