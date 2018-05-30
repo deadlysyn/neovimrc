@@ -1,34 +1,48 @@
 " Do this early.
 set encoding=utf8
 
-" https://github.com/junegunn/vim-plug
+" junegunn/vim-plug
 call plug#begin('~/.config/nvim/plugged')
-Plug 'https://github.com/itchyny/lightline.vim.git'
-Plug 'https://github.com/chriskempson/base16-vim.git'
-Plug 'https://github.com/neomake/neomake.git'
-Plug 'https://github.com/Shougo/deoplete.nvim.git', { 'do': ':UpdateRemotePlugins' }
-Plug 'https://github.com/airblade/vim-gitgutter.git'
-Plug 'https://github.com/Shougo/denite.nvim.git'
-Plug 'https://github.com/brooth/far.vim.git'
-Plug 'https://github.com/amix/open_file_under_cursor.vim.git'
-Plug 'https://github.com/mileszs/ack.vim.git'
-"Plug 'https://github.com/tpope/vim-unimpaired.git'
-Plug 'https://github.com/tpope/vim-repeat.git'
-Plug 'https://github.com/tpope/vim-surround.git'
-Plug 'https://github.com/tpope/vim-sleuth.git'
-Plug 'https://github.com/tpope/vim-commentary.git'
-Plug 'https://github.com/tpope/vim-fugitive.git'
-Plug 'https://github.com/terryma/vim-multiple-cursors.git'
-Plug 'https://github.com/sheerun/vim-polyglot.git'
-Plug 'https://github.com/SirVer/ultisnips.git'
-Plug 'https://github.com/honza/vim-snippets.git'
-Plug 'https://github.com/fatih/vim-go.git', { 'do': ':GoUpdateBinaries', 'tag': 'v1.17' }
-Plug 'https://github.com/pangloss/vim-javascript.git'
-"Plug 'https://github.com/mxw/vim-jsx.git'
-Plug 'https://github.com/elzr/vim-json.git'
-"Plug 'https://github.com/gabrielelana/vim-markdown.git'
-Plug 'https://github.com/stephpy/vim-yaml.git'
+Plug 'chriskempson/base16-vim'
+Plug 'itchyny/lightline.vim'
+Plug 'neomake/neomake'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'airblade/vim-gitgutter'
+Plug 'Shougo/denite.nvim'
+Plug 'brooth/far.vim'
+Plug 'amix/open_file_under_cursor.vim'
+Plug 'wesQ3/vim-windowswap'
+Plug 'mileszs/ack.vim'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-sleuth'
+Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-fugitive'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'sheerun/vim-polyglot'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'elzr/vim-json'
+Plug 'stephpy/vim-yaml'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries', 'tag': 'v1.17' }
+Plug 'pangloss/vim-javascript'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'mxw/vim-jsx'
+Plug 'mhartington/nvim-typescript'
 call plug#end()
+
+" Future consideration:
+" gabrielelana/vim-markdown.git
+" wokalski/autocomplete-flow.git
+"   Requires: HerringtonDarkholme/yats.vim
+" zchee/deoplete-jedi.git
+"   Requires: davidhalter/jedi
+" carlitux/deoplete-ternjs
+"   Requires: http://ternjs.net
 
 " Keep config modular
 source ~/.config/nvim/include/00-simple.vim
