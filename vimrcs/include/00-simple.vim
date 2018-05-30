@@ -21,15 +21,15 @@ set wildignorecase
 
 " Ignore cruft
 set wildignore=*~,*.swp,*.bak,*/.DS_Store
-set wildignore+=*.pyc,*.class,*.sln,*.Master,*.csproj,*.csproj.user,*.cache,*.dll,*.pdb,*.min.*,*.o
+set wildignore+=*.pyc,*.class,*.sln,*.Master,*.csproj,*.csproj.user,*.cache,*.pdb,*.min.*,*.o
 set wildignore+=*/.git/**/*,*/.hg/**/*,*/.svn/**/*
 set wildignore+=tags
 set wildignore+=*.tar.*
 
-" write file contents when calling :make
+" Write file contents when calling :make
 set autowrite
 
-" Let plugins show output after 500ms
+" Plugin refresh time
 " Note: Some plugins suggest lowering this, but going too
 " low can cause highlighting glitches. YMMV.
 set updatetime=500
@@ -130,7 +130,7 @@ set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
 " => Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Turn backup off, since most stuff is in SVN, git et.c anyway...
+" Turn backup off, since most stuff is in SVN, git etc
 set nobackup
 set nowb
 set noswapfile
@@ -242,6 +242,13 @@ inoremap <C-k> <ESC>:m .-2<CR>==gi
 vnoremap <C-j> :m '>+1<CR>gv=gv
 vnoremap <C-k> :m '<-2<CR>gv=gv
 
+" Run maco on visual selection by pressing '@'
+xnoremap @ :<C-u>call ExecuteMacroOverVisualRange()<CR>
+function! ExecuteMacroOverVisualRange()
+  echo "@".getcmdline()
+  execute ":'<,'>normal @".nr2char(getchar())
+endfunction
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -249,7 +256,7 @@ vnoremap <C-k> :m '<-2<CR>gv=gv
 set spelllang=en
 set spellfile=~/.local/share/nvim/site/spell/en.utf-8.add
 
-" Pressing ,ss will toggle and untoggle spell checking
+" Pressing ,ss will toggle spell checking
 map <leader>ss :setlocal spell!<cr>
 
 " Shortcuts using <leader>
