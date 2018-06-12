@@ -89,20 +89,18 @@ au FileType python set indentkeys-=0#
 " => JavaScript section
 """""""""""""""""""""""""""""""
 
-" treat ejs templates like html
-"au BufNewFile,BufRead *.ejs set filetype=html
-
-" run prettier on javascript files
-autocmd FileType javascript set formatprg=prettier\ --stdin
+" run prettier-eslint on javascript files
+"autocmd FileType javascript set formatprg=prettier-eslint\ --stdin
 
 " format on save
-autocmd BufWritePre *.js :normal gggqG
-au FileType javascript setl fen
-au FileType javascript setl nocindent
-au FileType javascript imap <c-t> $log();<esc>hi
-au FileType javascript imap <c-a> alert();<esc>hi
-au FileType javascript inoremap <buffer> $r return
-au FileType javascript inoremap <buffer> $f // --- PH<esc>FP2xi
+"autocmd BufWritePre *.js :normal gggqG
+
+" au FileType javascript setl fen
+" au FileType javascript setl nocindent
+" au FileType javascript imap <c-t> $log();<esc>hi
+" au FileType javascript imap <c-a> alert();<esc>hi
+" au FileType javascript inoremap <buffer> $r return
+" au FileType javascript inoremap <buffer> $f // --- PH<esc>FP2xi
 
 """"""""""""""""""""""""""""""
 " => YAML section

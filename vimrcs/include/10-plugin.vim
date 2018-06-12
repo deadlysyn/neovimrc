@@ -65,11 +65,15 @@ map <leader>p :cp<cr>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " let g:ale_fix_on_save = 1
-" let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
-" let g:ale_linters_explicit = 1
 
-" Disable highlighting
-let g:ale_set_highlights = 0
+" Linters to use
+let g:ale_fixers = {}
+let g:ale_fixers = {
+\   'javascript': ['prettier-eslint\ --stdin'],
+\}
+
+" Only run specified linters
+let g:ale_linters_explicit = 1
 
 " Always show sign column
 let g:ale_sign_column_always = 1
@@ -81,6 +85,8 @@ let g:ale_set_quickfix = 1
 " Error and warning signs.
 let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
+highlight clear ALEErrorSign
+highlight clear ALEWarningSign
 
 " Enable integration with airline.
 let g:airline#extensions#ale#enabled = 1
