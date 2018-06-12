@@ -67,10 +67,23 @@ map <leader>p :cp<cr>
 " let g:ale_fix_on_save = 1
 " let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
 " let g:ale_linters_explicit = 1
-" let g:ale_sign_column_always = 1
-" let g:airline#extensions#ale#enabled = 1
-" let g:ale_set_loclist = 0
-" let g:ale_set_quickfix = 1
+
+" Disable highlighting
+let g:ale_set_highlights = 0
+
+" Always show sign column
+let g:ale_sign_column_always = 1
+
+" Use quickfix vs loclist
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+
+" Error and warning signs.
+let g:ale_sign_error = '⤫'
+let g:ale_sign_warning = '⚠'
+
+" Enable integration with airline.
+let g:airline#extensions#ale#enabled = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Denite
