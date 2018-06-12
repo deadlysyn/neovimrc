@@ -1,6 +1,6 @@
 [![Neovim Logo](https://github.com/deadlysyn/neovimrc/blob/master/img/neovim-logo.png "Neovim")](https://neovim.io)
 
-**NOTE: Plugin selection is almost locked down, but tuning in progress! This is mostly true for deoplete, which I am working hard to optimize for my specific language choices. Feel free to test drive, but I'm hoping to get startup time improved after some pending changes.**
+**NOTE: Just when I thought I had tracked down the perfect combo of plugins/settings, I ran into some nasty bugs and integration issues between some components. I fought for a couple weeks, and never quite got things 100% where I wanted.  For now, I've ripped a lot of bits out and simplified this to work but without a lot of the features I desire (especially around language server/autocomplete/javascript). Stay tuned.  I've simply ran short on time for tweaking my vim config due to day job and other interests.  :-(**
 
 # Opinionated Neovim Configuration
 
