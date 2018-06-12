@@ -1,10 +1,10 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Ack / silversearcher / cope
+" => ack.vim / ag / grep
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-"let Grep_Skip_Dirs = '.git node_modules'
+let Grep_Skip_Dirs = '.git node_modules'
 
-" Use ag over grep
+" Use ag to grep
 set grepprg=ag\ --vimgrep\ --smart-case
 let g:ackprg = 'ag --vimgrep --smart-case'
 
@@ -30,71 +30,47 @@ map <leader>p :cp<cr>
 " => deoplete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Lazy-load to help startup time
-let g:deoplete#enable_at_startup = 0
-autocmd InsertEnter * call deoplete#enable()
+"" Lazy-load to help startup time
+"let g:deoplete#enable_at_startup = 0
 
-call deoplete#custom#option('yarp', v:true)
+"" Neocomplete-like auto select
+""set completeopt+=noinsert
 
-" Neocomplete-like auto select
-set completeopt+=noinsert
+"" Make status messages more concise
+""set shortmess+=c
 
-" Make status messages more concise
-set shortmess+=c
+"" Smart case matching
+"let g:deoplete#enable_smart_case = 1
 
-" Hit enter vs <C-y> to close popup window
-" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-" function! s:my_cr_function() abort
-"     return deoplete#close_popup() . "\<CR>"
-" endfunction<Paste>
+"" Helps performance
+"let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
 
-" Smart case matching
-let g:deoplete#enable_smart_case = 1
+"" disable autocomplete by default
+"" let b:deoplete_disable_auto_complete=1
+"" let g:deoplete_disable_auto_complete=1
+"" call deoplete#custom#buffer_option('auto_complete', v:false)
 
-" Helps performance
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+"" Disable the candidates in Comment/String syntaxes.
+"call deoplete#custom#source('_',
+"    \ 'disabled_syntaxes', ['Comment', 'String'])
 
-" disable autocomplete by default
-let b:deoplete_disable_auto_complete=1
-let g:deoplete_disable_auto_complete=1
-call deoplete#custom#buffer_option('auto_complete', v:false)
+"" Disable buffer source
+"call deoplete#custom#option('ignore_sources', {'_': ['buffer']})
 
-if !exists('g:deoplete#omni#input_patterns')
-    let g:deoplete#omni#input_patterns = {}
-endif
-
-" Disable the candidates in Comment/String syntaxes.
-call deoplete#custom#source('_',
-    \ 'disabled_syntaxes', ['Comment', 'String'])
-
-" Disable buffer source
-call deoplete#custom#option('ignore_sources', {'_': ['buffer']})
-
-" Sort candidates alphabetically
-call deoplete#custom#source('_', 'sorters', ['sorter_word'])
-
-" autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
-" set sources
-let g:deoplete#sources = {}
-let g:deoplete#sources.go = ['LanguageClient']
-let g:deoplete#sources.javascript = ['LanguageClient']
+"" Close completion popup after selection
+"autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => LanguageClient
+" => ALE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:LanguageClient_serverCommands = {
-    \ 'go': ['go-langserver', 'gocode'],
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ }
-
-" Automatically start language servers.
-let g:LanguageClient_autoStart = 1
-
-nnoremap <silent> <leader>lh :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> <leader>ld :call LanguageClient#textDocument_definition()<CR>
-nnoremap <silent> <leader>lr :call LanguageClient#textDocument_rename()<CR>
+" let g:ale_fix_on_save = 1
+" let b:ale_fixers = {'javascript': ['prettier', 'eslint']}
+" let g:ale_linters_explicit = 1
+" let g:ale_sign_column_always = 1
+" let g:airline#extensions#ale#enabled = 1
+" let g:ale_set_loclist = 0
+" let g:ale_set_quickfix = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Denite
@@ -131,35 +107,20 @@ let g:gitgutter_sign_removed = '∅'
 let g:gitgutter_sign_removed_first_line = '∅'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => lightline
+" => airline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:lightline = {
-      \ 'colorscheme': 'Tomorrow_Night',
-      \ 'active': {
-      \   'left': [ ['mode', 'paste'],
-      \             ['fugitive', 'readonly', 'filename', 'modified'] ],
-      \   'right': [ [ 'lineinfo' ],
-      \              ['percent'],
-      \              [ 'filetype'] ]
-      \ },
-      \ 'component': {
-      \   'readonly': '%{&filetype=="help"?"":&readonly?"🔒":""}',
-      \   'modified': '%{&filetype=="help"?"":&modified?"+":&modifiable?"":"-"}',
-      \   'fugitive': '%{exists("*fugitive#head")?fugitive#head():""}'
-      \ },
-      \ 'component_visible_condition': {
-      \   'readonly': '(&filetype!="help"&& &readonly)',
-      \   'modified': '(&filetype!="help"&&(&modified||!&modifiable))',
-      \   'fugitive': '(exists("*fugitive#head") && ""!=fugitive#head())'
-      \ },
-      \ 'separator': { 'left': ' ', 'right': ' ' },
-      \ 'subseparator': { 'left': ' ', 'right': ' ' },
-      \ 'tabline': {
-      \   'left': [ ['tabs'] ],
-      \   'right': [ ['close'] ]
-      \ }
-      \ }
+let g:airline_theme = 'base16_tomorrow'
+
+" Show open buffers in tabline when only one tab open
+let g:airline#extensions#tabline#enabled = 1
+
+" Use straight vs powerline style tabs
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
+
+" Adjust tabline format
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => neomake
@@ -207,9 +168,9 @@ let g:go_disable_autoinstall = 0
 let g:go_list_type = "quickfix"
 
 " make jumping between errors in go-vim easier
-map <C-n> :cnext<CR>
-map <C-m> :cprevious<CR>
-nnoremap <leader>a :cclose<CR>
+" map <C-n> :cnext<CR>
+" map <C-m> :cprevious<CR>
+" nnoremap <leader>a :cclose<CR>
 
 " make common go tasks easier in go-vim
 au FileType go nmap <Leader>c <Plug>(go-coverage-toggle)
@@ -236,19 +197,13 @@ autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 " => vim-javascript
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:javascript_plugin_flow = 1
+"let g:javascript_plugin_flow = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-json
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:vim_json_syntax_conceal = 0
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vim-multiple-cursors
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let g:multi_cursor_next_key="\<C-s>"
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => vim-markdown

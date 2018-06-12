@@ -48,9 +48,12 @@ brew install python # python3 required by deoplete
 pip3 install --user neovim
 pip3 install --upgrade neovim
 
-# Install/configure your favorite linters and formatters..
+# Install linters, formatters and completion sources...
 npm install -g eslint
 npm install -g prettier
+npm install -g javascript-typescript-langserver
+npm install -g typescript
+go get -u github.com/sourcegraph/go-langserver
 ```
 
 This is still a work in progress, so if you find something missing please let me know...
