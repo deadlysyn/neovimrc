@@ -1,6 +1,6 @@
 [![Neovim Logo](https://github.com/deadlysyn/neovimrc/blob/master/img/neovim-logo.png "Neovim")](https://neovim.io)
 
-**NOTE: Just when I thought I had tracked down the perfect combo of plugins/settings, I ran into some nasty bugs and integration issues between some components. I fought for a couple weeks, and never quite got things 100% where I wanted.  For now, I've ripped a lot of bits out and simplified this to work but without a lot of the features I desire (especially around language server/autocomplete/javascript). Stay tuned.  I've simply ran short on time for tweaking my vim config due to day job and other interests.  :-(**
+**NOTE: Pretty much always WIP...**
 
 # Opinionated Neovim Configuration
 
@@ -24,7 +24,7 @@ portable, but I've purposefully optimized for MacOS + [iTerm2](https://www.iterm
 [tmux](https://github.com/tmux/tmux/wiki). I've also stripped a few plugins I relied
 on heavily for years ([bufexplorer](https://github.com/jlanzarotta/bufexplorer),
 [NERD Tree](https://github.com/scrooloose/nerdtree), [ctrlp](https://github.com/ctrlpvim/ctrlp.vim)),
-opting for [denite](https://github.com/Shougo/denite.nvim) as a more efficient Swiss Army knife.
+opting for [fzf](https://github.com/junegunn/fzf) as a more efficient Swiss Army knife.
 
 Hopefully you find this useful...  If not directly, at least as a starting point for your
 own customization!
@@ -34,26 +34,13 @@ own customization!
 Out of the box, this configuration requires the following:
 
 ```
-# My preferences
-brew install iterm2
-brew install tmux
-brew tap caskroom/fonts
-brew cask install font-fira-code # ligature support
-
 # Hard dependencies
 brew install neovim
 brew install the_silver_searcher # grep replacement
-brew install python # python3 required by deoplete
-
-pip3 install --user neovim
-pip3 install --upgrade neovim
 
 # Install linters, formatters and completion sources...
 npm install -g eslint
 npm install -g prettier
-npm install -g javascript-typescript-langserver
-npm install -g typescript
-go get -u github.com/sourcegraph/go-langserver
 ```
 
 This is still a work in progress, so if you find something missing please let me know...
@@ -74,18 +61,11 @@ since that's a thing now and fewer dependencies are awesome.
 Read over the documentation for each of the included plugins for usage information...
 
 - [ack.vim](https://github.com/mileszs/ack.vim): Vim plugin for the Perl module / CLI script 'ack' (used for alias and command definitions, with `ackprg` mapped to `ag --vimgrep`)
-- [denite](https://github.com/Shougo/denite.nvim): A command-line fuzzy finder
-- [deoplete](https://github.com/Shougo/deoplete.nvim): Dark powered asynchronous completion framework for neovim/Vim8
-- [far.vim](https://github.com/brooth/far.vim): Find And Replace Vim plugin
+- [fzf](https://github.com/junegunn/fzf): A command-line fuzzy finder
 - [lightline](https://github.com/itchyny/lightline.vim): A light and configurable statusline/tabline plugin for Vim.
-- [neomake](https://github.com/neomake/neomake): Asynchronous linting and make framework for Neovim/Vim
-- [open_file_under_cursor.vim](https://github.com/amix/open_file_under_cursor.vim): Open file under cursor when pressing gf (if the text under the cursor is a path)
-- [ultisnips](https://github.com/SirVer/ultisnips): The ultimate snippet solution for Vim
-- [vim-snippets](https://github.com/honza/vim-snippets): vim-snipmate default snippets (Previously snipmate-snippets)
 - [vim-unimpaired](https://github.com/tpope/vim-unimpaired): pairs of handy bracket mappings
 - [vim-repeat](https://github.com/tpope/vim-repeat): enable repeating supported plugin maps with "."
 - [vim-surround](https://github.com/tpope/vim-surround): quoting/parenthesizing made simple
-- [vim-sleuth](https://github.com/tpope/vim-sleuth): Heuristically set buffer options
 - [vim-commentary](https://github.com/tpope/vim-commentary): comment stuff out
 - [vim-fugitive](https://github.com/tpope/vim-fugitive): a Git wrapper so awesome, it should be illegal
 - [vim-gitgutter](https://github.com/airblade/vim-gitgutter): A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks

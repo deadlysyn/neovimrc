@@ -95,10 +95,18 @@ let g:airline#extensions#ale#enabled = 1
 " => Denite
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-nnoremap <leader>ff :Denite file/rec<CR>
-nnoremap <leader>fb :Denite buffer<CR>
-nnoremap <leader>fc :DeniteCursorWord file/rec buffer<CR>
-call denite#custom#option('default', 'prompt', '➤')
+"nnoremap <leader>ff :Denite file/rec<CR>
+"nnoremap <leader>fb :Denite buffer<CR>
+"nnoremap <leader>fc :DeniteCursorWord file/rec buffer<CR>
+"call denite#custom#option('default', 'prompt', '➤')
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => fzf
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>b :Buffers<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Git gutter (Git diff)
@@ -145,16 +153,16 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 " => neomake
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:neomake_serialize = 1
-let g:neomake_serialize_abort_on_error = 1
-let g:neomake_open_list = 2
+"let g:neomake_serialize = 1
+"let g:neomake_serialize_abort_on_error = 1
+"let g:neomake_open_list = 2
 
 " Be less aggressive when on battery
-if system('pmset -g | grep AC >/dev/null')
-    call neomake#configure#automake('nrwi', 500)
-else
-    call neomake#configure#automake('w')
-endif
+"if system('pmset -g | grep AC >/dev/null')
+"    call neomake#configure#automake('nrwi', 500)
+"else
+"    call neomake#configure#automake('w')
+"endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Vim-go

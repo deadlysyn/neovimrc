@@ -2,13 +2,6 @@
 " => Local customiations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Improves startup time
-let g:python_host_prog = '/usr/local/bin/python2'
-let g:python3_host_prog = '/usr/local/bin/python3'
-
-" Not used in terminal; set in iTerm
-"set guifont=Fira\ Code:h12
-
 set background=dark
 
 " https://github.com/chriskempson/base16-shell
@@ -21,6 +14,6 @@ endif
 " colorscheme and line/cursor highlighting.
 "
 " keep denite matches readable
-highlight deniteMatchedChar cterm=reverse gui=reverse
+"highlight deniteMatchedChar cterm=reverse gui=reverse
 " make syntax errors readable
-highlight Error ctermfg=1 ctermbg=3 guifg=#cc6666 guibg=#f0c674
+"highlight Error ctermfg=1 ctermbg=3 guifg=#cc6666 guibg=#f0c674
