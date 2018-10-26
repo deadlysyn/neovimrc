@@ -1,8 +1,6 @@
 [![Neovim Logo](https://github.com/deadlysyn/neovimrc/blob/master/img/neovim-logo.png "Neovim")](https://neovim.io)
 
-**NOTE: Pretty much always WIP...**
-
-# Opinionated Neovim Configuration
+# Yet Another (Neo)vim Configuration
 
 I've been using vi(m) for over 20 years. In that time, I've accumulated a lot of
 customizations. Aside from my personal settings, pre-baked configs -- including
@@ -13,9 +11,7 @@ when combined with [tmux](https://github.com/tmux/tmux). These served me well fo
 When I decided to give [Neovim](https://neovim.io) a spin, I wanted to take the opportunity to
 re-evaluate my choices -- removing plugins I didn't use, updating ones which had
 better alternatives (in my opinion), adjusting key bindings and other bits to my taste,
-and optimizing the environment for the languages I currently use most (Javascript and Go).
-For better or worse, I also spend a lot of time staring at JSON and YAML, and like
-appropriately tuned syntax highlighting.
+and optimizing the environment for the languages I currently use most.
 
 _This project is very opinionated._ When compared to more thorough projects like
 [amix/vim](https://github.com/amix/vimrc), I've stripped a lot of compatibility code
@@ -52,7 +48,6 @@ I use [vim-plug](https://github.com/junegunn/vim-plug) for plugin management. It
 minimalist while maintaining a user-friendly interface -- for the most part, you just
 need to remember `PlugInstall` and `PlugClean`. Installation is a breeze, and the install
 script will take care of it for you. A future effort may refactor using
-[dein](https://github.com/Shougo/dein.vim) since it's reportedly faster, or perhaps
 [native package management](https://shapeshed.com/vim-packages)
 since that's a thing now and fewer dependencies are awesome.
 
@@ -61,20 +56,24 @@ since that's a thing now and fewer dependencies are awesome.
 Read over the documentation for each of the included plugins for usage information...
 
 - [ack.vim](https://github.com/mileszs/ack.vim): Vim plugin for the Perl module / CLI script 'ack' (used for alias and command definitions, with `ackprg` mapped to `ag --vimgrep`)
+- [airline](https://github.com/vim-airline/vim-airline): A light and configurable statusline/tabline plugin for Vim.
+- [ale](https://github.com/w0rp/ale): Asynchronous linting/fixing for Vim and Language Server Protocol (LSP) integration
+- [editorconfig](https://github.com/editorconfig/editorconfig-vim): EditorConfig plugin for Vim
 - [fzf](https://github.com/junegunn/fzf): A command-line fuzzy finder
-- [lightline](https://github.com/itchyny/lightline.vim): A light and configurable statusline/tabline plugin for Vim.
-- [vim-unimpaired](https://github.com/tpope/vim-unimpaired): pairs of handy bracket mappings
+- [fzf.vim](https://github.com/junegunn/fzf.vim): Better fzf vim plugin
+- [vim-commentary](https://github.com/tpope/vim-commentary): comment stuff out
+- [vim-eunuch](https://github.com/tpope/vim-eunuch): Aliases for useful shell commands
+- [vim-fugitive](https://github.com/tpope/vim-fugitive): a Git wrapper so awesome, it should be illegal
+- [vim-rhubarb](https://github.com/tpope/vim-rhubarb): GitHub extension for fugitive.vim
 - [vim-repeat](https://github.com/tpope/vim-repeat): enable repeating supported plugin maps with "."
 - [vim-surround](https://github.com/tpope/vim-surround): quoting/parenthesizing made simple
-- [vim-commentary](https://github.com/tpope/vim-commentary): comment stuff out
-- [vim-fugitive](https://github.com/tpope/vim-fugitive): a Git wrapper so awesome, it should be illegal
+- [vim-unimpaired](https://github.com/tpope/vim-unimpaired): pairs of handy bracket mappings
 - [vim-gitgutter](https://github.com/airblade/vim-gitgutter): A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks
 - [vim-polyglot](https://github.com/sheerun/vim-polyglot): A solid language pack for Vim
 - [vim-go](https://github.com/fatih/vim-go): Go development plugin for Vim
 - [vim-javascript](https://github.com/pangloss/vim-javascript): Vastly improved Javascript indentation and syntax support in Vim
 - [vim-jsx](https://github.com/mxw/vim-jsx): React JSX syntax highlighting and indenting for vim.
 - [vim-json](https://github.com/elzr/vim-json): A better JSON for Vim: distinct highlighting of keywords vs values, JSON-specific (non-JS) warnings, quote concealing
-- [vim-markdown](https://github.com/gabrielelana/vim-markdown): Markdown for Vim: a complete environment to create Markdown files with a syntax highlight that doesn't suck!
 - [vim-yaml](https://github.com/stephpy/vim-yaml): Override vim syntax for yaml files
 - [vim-windowswap](https://github.com/wesQ3/vim-windowswap): Swap your windows without ruining your layout
 
@@ -186,11 +185,11 @@ By default, I assign `<leader>` to `<space>`.
 - `<leader>-q/x`: open text/markdown scratch buffer
 - `<leader>-bd`: close current buffer
 - `<leader>-ba`: close all buffers
-- `<leader>-l`: next buffer
-- `<leader>-h`: previous buffer
+- `]-b`: next buffer
+- `[-b`: previous buffer
 - `<leader>-cd`: change working directory to current buffer's
 - `<leader>-te`: open tab with current buffer's path
-- `<leader>-ww`: type this over two different windows to swap their positions
+- `<leader>-ww`: type this in two different windows to swap their positions
 - `tl`: toggle between current and last accessed tab
 - `<ctrl>-j/k/h/l`: move around windows
 
@@ -199,15 +198,12 @@ By default, I assign `<leader>` to `<space>`.
 - `<leader>ff`: fuzzy search files
 - `<leader>fb`: fuzzy search buffers
 - `<leader>fc`: fuzzy search files and buffers for word under cursor
-- `<C-g/t>`: move down/up in denite buffers
 
 ### Easier Editing
 
 - `@`: run macro on visual selection
 - `<ctrl>-j/k`: move line or visual block up/down
 - `<leader>-ss`: toggle spell checking
-- `<leader>-pp`: toggle paste mode
-- `<leader>-pp`: toggle paste mode
 - `<leader>-pp`: toggle paste mode
 
 ### Language Support
@@ -237,6 +233,5 @@ TODO
 - [Oldie but goodie](https://dockyard.com/blog/2013/09/26/vim-moving-lines-aint-hard)
 - [Vim without NERD tree or CtrlP](https://gist.github.com/csswizardry/9a33342dace4786a9fee35c73fa5deeb)
 - [Learn Vimscript the Hard Way](http://learnvimscriptthehardway.stevelosh.com)
-- [VimR: A Neovim GUI](https://github.com/qvacua/vimr)
 - [Time to go back to Terminal.app?](https://danluu.com/term-latency)
 - [Awesome tmux Config](https://github.com/tony/tmux-config)
