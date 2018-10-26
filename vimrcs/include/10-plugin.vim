@@ -8,57 +8,8 @@ let Grep_Skip_Dirs = '.git node_modules'
 set grepprg=ag\ --vimgrep\ --smart-case
 let g:ackprg = 'ag --vimgrep --smart-case'
 
-" remap 'K' to grep directory for word under cursor
-nnoremap K :Ack! "\b<cword>\b" <CR>
-
-" Open Ack and put the cursor in the right position
-map <leader>g :Ack<space>
-
-" Do :help cope if you are unsure what cope is. It's super useful!
-" When you search with Ack, display your results in cope by doing:
-"   <leader>cc
-" To go to the next search result do:
-"   <leader>n
-" To go to the previous search results do:
-"   <leader>p
-map <leader>cc :botright cope<cr>
-map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg
-map <leader>n :cn<cr>
-map <leader>p :cp<cr>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => deoplete
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"" Lazy-load to help startup time
-"let g:deoplete#enable_at_startup = 0
-
-"" Neocomplete-like auto select
-""set completeopt+=noinsert
-
-"" Make status messages more concise
-""set shortmess+=c
-
-"" Smart case matching
-"let g:deoplete#enable_smart_case = 1
-
-"" Helps performance
-"let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-
-"" disable autocomplete by default
-"" let b:deoplete_disable_auto_complete=1
-"" let g:deoplete_disable_auto_complete=1
-"" call deoplete#custom#buffer_option('auto_complete', v:false)
-
-"" Disable the candidates in Comment/String syntaxes.
-"call deoplete#custom#source('_',
-"    \ 'disabled_syntaxes', ['Comment', 'String'])
-
-"" Disable buffer source
-"call deoplete#custom#option('ignore_sources', {'_': ['buffer']})
-
-"" Close completion popup after selection
-"autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+" remap '<leader>g' to grep directory for word under cursor
+nnoremap <leader>g :Ack! "\b<cword>\b" <CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => ALE
@@ -92,21 +43,12 @@ highlight clear ALEWarningSign
 let g:airline#extensions#ale#enabled = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Denite
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"nnoremap <leader>ff :Denite file/rec<CR>
-"nnoremap <leader>fb :Denite buffer<CR>
-"nnoremap <leader>fc :DeniteCursorWord file/rec buffer<CR>
-"call denite#custom#option('default', 'prompt', '➤')
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => fzf
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-nnoremap <leader>f :Files<CR>
-nnoremap <leader>b :Buffers<CR>
+nmap <Leader>b :Buffers<CR>
+nmap <Leader>f :Files<CR>
+nmap <Leader>t :Tags<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Git gutter (Git diff)
@@ -236,14 +178,12 @@ let g:vim_json_syntax_conceal = 0
 " => vim-markdown
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" force *.md as markdown
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-let g:markdown_fenced_languages = ['html', 'css', 'bash=sh', 'javascript', 'go']
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => ultisnips
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" enable fenced code block syntax highlighting
+let g:markdown_fenced_languages = ['html', 'css', 'bash=sh', 'javascript', 'go', 'python']
 
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<c-b>"
-let g:UltiSnipsEditSplit="vertical"
+" disable markdown syntax concealing
+let g:markdown_syntax_conceal = 0
+
