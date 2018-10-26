@@ -32,7 +32,7 @@ set autowrite
 " Plugin refresh time
 " Note: Some plugins suggest lowering this, but going too
 " low can cause highlighting glitches. YMMV.
-set updatetime=500
+set updatetime=300
 
 " Adjust key sequence timeout
 set ttimeout
@@ -46,7 +46,7 @@ set clipboard=unnamed
 set nofoldenable
 
 " disable automatic comment insertion
-autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
+"autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -123,8 +123,6 @@ set colorcolumn=80
 " Highlight unwanted spaces
 set list
 set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
-"highlight link sensibleWhitespaceError Error
-"autocmd Syntax * syntax match sensibleWhitespaceError excludenl /\s\+\%#\@<!$\| \+\ze\t/ display containedin=ALL
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Files, backups and undo
