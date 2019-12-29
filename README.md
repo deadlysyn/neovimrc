@@ -1,6 +1,4 @@
-[![Neovim Logo](https://github.com/deadlysyn/neovimrc/blob/master/img/neovim-logo.png "Neovim")](https://neovim.io)
-
-# Yet Another (Neo)vim Configuration
+# Simple, opinionated neovim config
 
 I've been using vi(m) for over 20 years. In that time, I've accumulated a lot of
 customizations. Aside from my personal settings, pre-baked configs -- including
@@ -22,9 +20,6 @@ on heavily for years ([bufexplorer](https://github.com/jlanzarotta/bufexplorer),
 [NERD Tree](https://github.com/scrooloose/nerdtree), [ctrlp](https://github.com/ctrlpvim/ctrlp.vim)),
 opting for [fzf](https://github.com/junegunn/fzf) as a more efficient Swiss Army knife.
 
-Hopefully you find this useful...  If not directly, at least as a starting point for your
-own customization!
-
 ## Dependencies
 
 Out of the box, this configuration requires the following:
@@ -33,23 +28,14 @@ Out of the box, this configuration requires the following:
 # Hard dependencies
 brew install neovim
 brew install the_silver_searcher # grep replacement
-
-# Install linters, formatters and completion sources...
-npm install -g eslint
-npm install -g prettier
 ```
-
-This is still a work in progress, so if you find something missing please let me know...
-More may be required, depending how far down the completion rabbit hole you want to go!
 
 ## Plugins
 
 I use [vim-plug](https://github.com/junegunn/vim-plug) for plugin management. It's fairly
 minimalist while maintaining a user-friendly interface -- for the most part, you just
 need to remember `PlugInstall` and `PlugClean`. Installation is a breeze, and the install
-script will take care of it for you. A future effort may refactor using
-[native package management](https://shapeshed.com/vim-packages)
-since that's a thing now and fewer dependencies are awesome.
+script will take care of it for you.
 
 ### Included Plugins
 
@@ -62,22 +48,13 @@ Read over the documentation for each of the included plugins for usage informati
 - [fzf](https://github.com/junegunn/fzf): A command-line fuzzy finder
 - [fzf.vim](https://github.com/junegunn/fzf.vim): Better fzf vim plugin
 - [vim-commentary](https://github.com/tpope/vim-commentary): comment stuff out
-- [vim-eunuch](https://github.com/tpope/vim-eunuch): Aliases for useful shell commands
-- [vim-fugitive](https://github.com/tpope/vim-fugitive): a Git wrapper so awesome, it should be illegal
-- [vim-rhubarb](https://github.com/tpope/vim-rhubarb): GitHub extension for fugitive.vim
-- [vim-repeat](https://github.com/tpope/vim-repeat): enable repeating supported plugin maps with "."
-- [vim-surround](https://github.com/tpope/vim-surround): quoting/parenthesizing made simple
-- [vim-unimpaired](https://github.com/tpope/vim-unimpaired): pairs of handy bracket mappings
 - [vim-gitgutter](https://github.com/airblade/vim-gitgutter): A Vim plugin which shows a git diff in the gutter (sign column) and stages/undoes hunks
 - [vim-polyglot](https://github.com/sheerun/vim-polyglot): A solid language pack for Vim
 - [vim-go](https://github.com/fatih/vim-go): Go development plugin for Vim
-- [vim-javascript](https://github.com/pangloss/vim-javascript): Vastly improved Javascript indentation and syntax support in Vim
-- [vim-jsx](https://github.com/mxw/vim-jsx): React JSX syntax highlighting and indenting for vim.
 - [vim-json](https://github.com/elzr/vim-json): A better JSON for Vim: distinct highlighting of keywords vs values, JSON-specific (non-JS) warnings, quote concealing
 - [vim-yaml](https://github.com/stephpy/vim-yaml): Override vim syntax for yaml files
-- [vim-windowswap](https://github.com/wesQ3/vim-windowswap): Swap your windows without ruining your layout
 
-## Layout, Color & Themes
+## Customizing
 
 Neovim configuration resides in `~/.config/nvim` (like vim's `~/.vim`). The main file is `init.vim`
 (Neovim's equivalent of `.vimrc`), which simply sources a number of `*.vim` files. This makes things
@@ -85,52 +62,12 @@ somewhat modular -- you can easily edit `init.vim` and exclude parts of the conf
 use. If you like everything and just want to override a couple settings or extend the defaults, you
 can drop custom bits in `99-custom.vim`.
 
-Included themes land in `~/.config/nvim/plugged/base16-vim/colors` courtesy of
-[base16-vim](https://github.com/chriskempson/base16-vim), and you can drop custom themes
-in `~/.config/nvim/colors`. I know themes are often seen as unnecessary bling,
-but as something I spend many hours a day staring at, I find a well designed colorscheme
-essential to happiness. When done right, it relieves eyestrain through optimal contrast
-and boosts efficiency by better conveying important information.
-
-For many years I was a [solarized](http://ethanschoonover.com/solarized) user.
-Everyone's taste is different, but I still think it's a thoughtful design. Unfortunately, I'm a
-night owl and often find myself working late. With Night Shift now native in MacOS (thank you,
-[flux](https://justgetflux.com)), I've found blue-heavy themes suffer as the day progresses. This
-got me looking for alternatives that offer similarly thoughtful design (balanced and consistent
-contrast, light and dark modes) in a different color palette.
-
-I spent some time looking at available themes (I really don't want to create my own), and
-the primary candidates I considered moving to were [gruvbox](https://github.com/morhetz/gruvbox)
-and [tomorrow](https://github.com/chriskempson/tomorrow-theme)... Both are beautiful, but
-I've currently settled on _Tomorrow_ for a few reasons:
-
-- More modes (light, dark, eighties, blue, etc.)
-- Stronger dark mode contrast
-- Mature project with [good community feedback](https://www.slant.co/topics/358/~best-color-themes-for-text-editors)
-
-### Base16 FTW
-
-Out of the box, I use the [Tomorrow Night](https://github.com/chriskempson/base16-tomorrow-scheme)
-colorscheme based on [base16](https://github.com/chriskempson/base16) (an amazing set of styling
-guidelines and theme builder framework). Aside from theming your terminal
-([which is left as an exercise for the reader](https://github.com/martinlindhe/base16-iterm2))
-and [tmux](https://github.com/deadlysyn/neovimrc/blob/master/tmux.conf),
-we just need to ensure Neovim and [lightline](https://github.com/itchyny/lightline.vim)
-are consistently styled.
-
-The first is addressed by simply installing [base16-vim](https://github.com/chriskempson/base16-vim)
-(pulls in all the base16 themes if you want to explore), and the latter ships with
-_Tomorrow Night_. Both are only present after `PlugInstall`.
-
 ### Truecolor
 
 [Most terminals support "truecolor" these days](https://gist.github.com/XVilka/8346728).
 This repo configures Neovim appropriately, but you may need additional steps in your
-environment based on the terminal you use, whether you layer on tmux, etc.
-
-Along with truecolor support, I mostly live in the commandline so use
-[base16-shell](https://github.com/chriskempson/base16-shell) to preserve the original ANSI colors.
-There's also a useful `colortest` utility you can use to verify proper behavior, and
+environment based on the terminal you use, whether you layer on tmux, etc. There's a useful
+`colortest` utility you can use to verify proper behavior, and
 [a helpful troubleshooting guide](https://recordnotfound.com/base16-vim-chriskempson-31016).
 
 This is working for me on latest versions:
@@ -144,23 +81,12 @@ Ensure Settings > Profiles > Terminal > Report Terminal Type == xterm-256color
 set -g default-terminal "screen-256color"
 set-option -ga terminal-overrides ",screen-256color:Tc"
 
-# (neo)vim
+# neovim
 set termguicolors
 ```
 
 Inside iTerm and tmux `echo $COLORTERM` returns `truecolor`.
 `printf "\x1b[38;2;255;100;0mTRUECOLOR\x1b[0m\n"` should display `TRUECOLOR` in red.
-
-## Ligatures
-
-After years with [Source Code Pro](https://github.com/adobe-fonts/source-code-pro), I've moved to
-[Fira Code](https://github.com/tonsky/FiraCode) mainly for
-[ligature support](https://medium.com/larsenwork-andreas-larsen/ligatures-coding-fonts-5375ab47ef8e).
-This is all the rage, but I feel it's a subjective setting. Some feel it makes their code
-easier to read, I resisted for quite awhile because I felt it actually made some things harder to read.
-Finally decided to give it a spin in this config, and chose Fira Code because
-[it is one of the top-reviewed fonts with ligature support](https://www.slant.co/topics/5611/~monospace-programming-fonts-with-ligatures).
-Aside from installing the font, be sure to select it and enable ligatures via `iTerm Settings > Profiles > Text > Font`.
 
 ## Installation
 
@@ -178,53 +104,37 @@ Refer to the [vim-plug](https://github.com/junegunn/vim-plug) docs for more info
 I'm still refining the aliases, and you can always grep the configs for key mappings,
 but here are some useful things to get you started...
 
-By default, I assign `<leader>` to `<space>`.
+Note: By default, I assign `<leader>` to `<space>`.
 
-### Buffers Tabs and Windows
+### Buffers Windows
 
-- `<leader>-q/x`: open text/markdown scratch buffer
-- `<leader>-bd`: close current buffer
+- `<leader>-bn`: open new buffer
+- `<leader>-bq`: close current buffer
 - `<leader>-ba`: close all buffers
-- `]-b`: next buffer
-- `[-b`: previous buffer
+- `<leader>-l`: next buffer
+- `<leader>-h`: previous buffer
 - `<leader>-cd`: change working directory to current buffer's
-- `<leader>-te`: open tab with current buffer's path
-- `<leader>-ww`: type this in two different windows to swap their positions
-- `tl`: toggle between current and last accessed tab
 - `<ctrl>-j/k/h/l`: move around windows
 
 ### Find Stuff
 
-- `<leader>ff`: fuzzy search files
-- `<leader>fb`: fuzzy search buffers
-- `<leader>fc`: fuzzy search files and buffers for word under cursor
+- `<leader><cr>`: clear search highlight
+- `<leader>f`: fuzzy search files
+- `<leader>b`: fuzzy search buffers
+- `<leader>g`: grep directory for word under cursor
 
 ### Easier Editing
 
 - `@`: run macro on visual selection
 - `<ctrl>-j/k`: move line or visual block up/down
+- `<leader>-w`: quick save
 - `<leader>-ss`: toggle spell checking
 - `<leader>-pp`: toggle paste mode
-
-### Language Support
-TODO
 
 ### Misc
 
 - `<leader>-m`: trim `^M`'s
-- `<leader>-<cr>`: turn off search highlight
-- `<leader>-e`: edit custom neovim config, auto-source on write
 - `xdate`: type in insert mode to replace with ISO 8601 timestamp
-
-## TODOs
-
-- Document keybindings (WIP)
-- More consistency across plugins (bindings, window types)
-- Optimize deoplete + language servers
-- Better linting
-- Show lint errors in lightline
-- Tags
-- s/ag/rg
 
 ## Resources & Inspiration
 
@@ -233,5 +143,4 @@ TODO
 - [Oldie but goodie](https://dockyard.com/blog/2013/09/26/vim-moving-lines-aint-hard)
 - [Vim without NERD tree or CtrlP](https://gist.github.com/csswizardry/9a33342dace4786a9fee35c73fa5deeb)
 - [Learn Vimscript the Hard Way](http://learnvimscriptthehardway.stevelosh.com)
-- [Time to go back to Terminal.app?](https://danluu.com/term-latency)
 - [Awesome tmux Config](https://github.com/tony/tmux-config)
