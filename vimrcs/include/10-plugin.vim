@@ -1,5 +1,5 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => ack.vim / ag / grep
+" ack.vim / ag
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let Grep_Skip_Dirs = '.git node_modules'
@@ -12,19 +12,19 @@ let g:ackprg = 'ag --vimgrep --smart-case'
 nnoremap <leader>g :Ack! "\b<cword>\b" <CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => ALE
+" ale
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " let g:ale_fix_on_save = 1
 
 " Linters to use
-let g:ale_fixers = {}
-let g:ale_fixers = {
-\   'javascript': ['prettier-eslint\ --stdin'],
-\}
+" let g:ale_fixers = {}
+" let g:ale_fixers = {
+" \   'javascript': ['prettier-eslint\ --stdin'],
+" \}
 
 " Only run specified linters
-let g:ale_linters_explicit = 1
+" let g:ale_linters_explicit = 1
 
 " Always show sign column
 let g:ale_sign_column_always = 1
@@ -34,8 +34,8 @@ let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 
 " Error and warning signs.
-let g:ale_sign_error = '⤫'
-let g:ale_sign_warning = '⚠'
+" let g:ale_sign_error = 'E'
+" let g:ale_sign_warning = 'W'
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
 
@@ -43,15 +43,14 @@ highlight clear ALEWarningSign
 let g:airline#extensions#ale#enabled = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => fzf
+" fzf
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 nmap <Leader>b :Buffers<CR>
 nmap <Leader>f :Files<CR>
-nmap <Leader>t :Tags<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Git gutter (Git diff)
+" gitgutter
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Where symbols are displayed
@@ -69,17 +68,17 @@ nnoremap <silent> <leader>gg :GitGutterToggle<cr>
 " Use ag vs grep
 let g:gitgutter_grep = 'ag'
 
-let g:gitgutter_sign_added = '✚'
-let g:gitgutter_sign_modified = '∓'
-let g:gitgutter_sign_modified_removed = '∓'
-let g:gitgutter_sign_removed = '∅'
-let g:gitgutter_sign_removed_first_line = '∅'
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '~'
+let g:gitgutter_sign_modified_removed = '-'
+let g:gitgutter_sign_removed = '-'
+let g:gitgutter_sign_removed_first_line = '^'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => airline
+" airline
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:airline_theme = 'base16_tomorrow'
+let g:airline_theme = 'minimalist'
 
 " Show open buffers in tabline when only one tab open
 let g:airline#extensions#tabline#enabled = 1
@@ -92,22 +91,7 @@ let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => neomake
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"let g:neomake_serialize = 1
-"let g:neomake_serialize_abort_on_error = 1
-"let g:neomake_open_list = 2
-
-" Be less aggressive when on battery
-"if system('pmset -g | grep AC >/dev/null')
-"    call neomake#configure#automake('nrwi', 500)
-"else
-"    call neomake#configure#automake('w')
-"endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vim-go
+" vim-go
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Use goimports instead of gofmt
@@ -163,19 +147,13 @@ endfunction
 autocmd FileType go nmap <leader>b :<C-u>call <SID>build_go_files()<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vim-javascript
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"let g:javascript_plugin_flow = 1
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vim-json
+" vim-json
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 let g:vim_json_syntax_conceal = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => vim-markdown
+" vim-markdown
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " force *.md as markdown
