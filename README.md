@@ -39,7 +39,9 @@ script will take care of it for you.
 
 ### Included Plugins
 
-Read over the documentation for each of the included plugins for usage information...
+There are a ton of cool plugins out there. I've tried very hard to add enough useful
+functionality to increase efficiency without over-bloating my editor.  Read over the
+documentation for each of the included plugins for usage information...
 
 - [ack.vim](https://github.com/mileszs/ack.vim): Vim plugin for the Perl module / CLI script 'ack' (used for alias and command definitions, with `ackprg` mapped to `ag --vimgrep`)
 - [airline](https://github.com/vim-airline/vim-airline): A light and configurable statusline/tabline plugin for Vim.
