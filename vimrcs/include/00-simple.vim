@@ -1,5 +1,5 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => General
+" general
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Enable filetype plugins
@@ -31,8 +31,8 @@ set autowrite
 
 " Plugin refresh time
 " Note: Some plugins suggest lowering this, but going too
-" low can cause highlighting glitches. YMMV.
-set updatetime=300
+" low can cause glitches. YMMV.
+set updatetime=750
 
 " Adjust key sequence timeout
 set ttimeout
@@ -49,14 +49,11 @@ set nofoldenable
 "autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => VIM user interface
+" user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " See 10 lines around the cursor when moving vertically
 set scrolloff=10
-
-" A buffer becomes hidden when it is abandoned
-set hid
 
 " Configure backspace so it acts as it should act
 set whichwrap+=<,>,h,l
@@ -67,6 +64,9 @@ set ignorecase
 " When searching try to be smart about cases
 set smartcase
 
+" Disable highlight when <leader><cr> is pressed
+map <silent> <leader><cr> :noh<cr>
+
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
 
@@ -76,7 +76,7 @@ set magic
 " Show matching brackets when text indicator is over them
 set showmatch
 " How many tenths of a second to blink when matching brackets
-set mat=2
+" set mat=2
 
 " No annoying sound on errors
 set noerrorbells
@@ -108,7 +108,7 @@ set formatoptions+=j
 set noshowmode noshowcmd noruler
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Colors and Fonts
+" colors and fonts
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Enable syntax highlighting
@@ -118,14 +118,14 @@ syntax enable
 set termguicolors
 
 " Show colored column to help prevent long lines
-set colorcolumn=80
+"set colorcolumn=80
 
 " Highlight unwanted spaces
 set list
-set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+set listchars=tab:>\ ,trail:~,extends:>,precedes:<,nbsp:+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Files, backups and undo
+" files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Turn backup off, since most stuff is in SVN, git etc
@@ -140,7 +140,7 @@ set undofile
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Text, tab and indent related
+" text, tab and indenting
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Use spaces instead of tabs
@@ -158,7 +158,7 @@ set autoindent
 set smartindent
 
 " Smart indenting after certain words
-set cinwords=if,elif,else,for,while,try,except,finally,def,class
+set cinwords=case,if,elif,else,for,while,try,except,finally,def,class
 
 " Delete trailing white space on save, only useful for some filetypes!
 " E.g. This would break markdown.
@@ -170,26 +170,20 @@ fun! CleanExtraSpaces()
     call setreg('/', old_query)
 endfun
 
-autocmd BufWritePre *.txt,*.js,*.py,*.wiki,*.sh,*.coffee :call CleanExtraSpaces()
+autocmd BufWritePre *.txt,*.js,*.py,*.sh :call CleanExtraSpaces()
 
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
-" Quickly open a buffer for scribble
-map <leader>q :e ~/buffer<cr>
-
-" Quickly open a markdown buffer for scribble
-map <leader>x :e ~/buffer.md<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Moving around, tabs, windows and buffers
+" moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><cr> :noh<cr>
+" A buffer becomes hidden when it is abandoned
+set hidden
 
 " Smart way to move between windows
 map <C-j> <C-W>j
@@ -197,23 +191,17 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" Open new buffer
+map <leader>bn :enew<cr>
+
 " Close the current buffer
-map <leader>bd :Bclose<cr>:tabclose<cr>gT
+map <leader>bq :bd!<cr>
 
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
 
 map <leader>l :bnext<cr>
 map <leader>h :bprevious<cr>
-
-" Let 'tl' toggle between this and the last accessed tab
-let g:lasttab = 1
-nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
-
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
@@ -223,7 +211,7 @@ set switchbuf=useopen,usetab,newtab
 set stal=2
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Editing mappings
+" editing mappings
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Remap VIM 0 to first non-blank character
@@ -248,13 +236,13 @@ function! ExecuteMacroOverVisualRange()
 endfunction
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Spell checking
+" spell checking
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 set spelllang=en
 set spellfile=~/.local/share/nvim/site/spell/en.utf-8.add
 
-" Pressing ,ss will toggle spell checking
+" Pressing <leader>ss will toggle spell checking
 map <leader>ss :setlocal spell!<cr>
 
 " Shortcuts using <leader>

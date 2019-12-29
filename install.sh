@@ -21,7 +21,7 @@ then
 fi
 
 # Backup configs on first run
-if [ ! -d "${DIR}.save" -a -d "${DIR}" ]
+if [[ ! -d "${DIR}.save" ]] && [[ -d "${DIR}" ]]
 then
     mv "${DIR}" "${DIR}.save"
 fi
@@ -39,7 +39,7 @@ grab https://raw.githubusercontent.com/deadlysyn/neovimrc/master/vimrcs/include/
     "${DIR}/include/10-plugin.vim"
 
 # Contains overrides, so only install if it doesn't exist or when forced.
-if [ "X${1}" == "X-f" -o ! -e "${DIR}/include/99-custom.vim" ]
+if [[ "${1}" == "-f" ]] || [[ ! -e "${DIR}/include/99-custom.vim" ]]
 then
     grab https://raw.githubusercontent.com/deadlysyn/neovimrc/master/vimrcs/include/99-custom.vim \
         "${DIR}/include/99-custom.vim"
