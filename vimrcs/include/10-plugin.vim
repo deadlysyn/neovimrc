@@ -85,7 +85,7 @@ let g:airline#extensions#tabline#enabled = 1
 
 " Use straight vs powerline style tabs
 let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#left_alt_sep = ''
 
 " Adjust tabline format
 let g:airline#extensions#tabline#formatter = 'unique_tail'
