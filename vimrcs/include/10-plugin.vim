@@ -34,8 +34,8 @@ let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 
 " Error and warning signs.
-" let g:ale_sign_error = 'E'
-" let g:ale_sign_warning = 'W'
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '⚠️'
 highlight clear ALEErrorSign
 highlight clear ALEWarningSign
 
@@ -70,7 +70,7 @@ let g:gitgutter_grep = 'ag'
 
 let g:gitgutter_sign_added = '+'
 let g:gitgutter_sign_modified = '~'
-let g:gitgutter_sign_modified_removed = '-'
+let g:gitgutter_sign_modified_removed = '~'
 let g:gitgutter_sign_removed = '-'
 let g:gitgutter_sign_removed_first_line = '^'
 
