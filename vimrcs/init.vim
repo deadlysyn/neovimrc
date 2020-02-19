@@ -2,7 +2,7 @@ set encoding=utf8
 
 " junegunn/vim-plug
 call plug#begin('~/.config/nvim/plugged')
-Plug 'hzchirs/vim-material'
+Plug 'chriskempson/base16-vim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
