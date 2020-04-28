@@ -1,5 +1,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" local customiations
+" => Local customiations
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
-colorscheme vim-material
+let base16colorspace=256
+colorscheme base16-tomorrow-night
+
